@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -82,11 +83,13 @@ const BrowseGemstones = () => {
   );
 
   const handleGemstoneClick = (gemstone: any) => {
+    console.log("Gemstone clicked:", gemstone);
     setSelectedGemstone(gemstone);
     setIsGemstoneModalOpen(true);
   };
 
   const handleAuthorClick = (authorName: string) => {
+    console.log("Author clicked:", authorName);
     setSelectedAuthor(authorName);
     setIsAuthorModalOpen(true);
   };
@@ -181,19 +184,29 @@ const BrowseGemstones = () => {
         )}
       </div>
 
-      {/* Modals */}
-      <GemstoneDetailModal
-        isOpen={isGemstoneModalOpen}
-        onClose={() => setIsGemstoneModalOpen(false)}
-        onAuthorClick={handleAuthorClick}
-        gemstone={selectedGemstone}
-      />
+      {/* Modals - Only render when we have valid data */}
+      {selectedGemstone && isGemstoneModalOpen && (
+        <GemstoneDetailModal
+          isOpen={isGemstoneModalOpen}
+          onClose={() => {
+            setIsGemstoneModalOpen(false);
+            setSelectedGemstone(null);
+          }}
+          onAuthorClick={handleAuthorClick}
+          gemstone={selectedGemstone}
+        />
+      )}
       
-      <AuthorProfileModal
-        isOpen={isAuthorModalOpen}
-        onClose={() => setIsAuthorModalOpen(false)}
-        authorName={selectedAuthor}
-      />
+      {selectedAuthor && isAuthorModalOpen && (
+        <AuthorProfileModal
+          isOpen={isAuthorModalOpen}
+          onClose={() => {
+            setIsAuthorModalOpen(false);
+            setSelectedAuthor("");
+          }}
+          authorName={selectedAuthor}
+        />
+      )}
     </div>
   );
 };
