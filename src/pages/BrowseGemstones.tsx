@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Map } from "lucide-react";
+import { Search, MapPin, Grid3X3 } from "lucide-react";
 import GemstoneCard from "@/components/GemstoneCard";
+import GemstoneMap from "@/components/GemstoneMap";
 
 const BrowseGemstones = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -99,6 +99,7 @@ const BrowseGemstones = () => {
                 onClick={() => setViewMode("grid")}
                 className={viewMode === "grid" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}
               >
+                <Grid3X3 className="w-4 h-4 mr-2" />
                 Grid View
               </Button>
               <Button
@@ -106,7 +107,7 @@ const BrowseGemstones = () => {
                 onClick={() => setViewMode("map")}
                 className={viewMode === "map" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}
               >
-                <Map className="w-4 h-4 mr-2" />
+                <MapPin className="w-4 h-4 mr-2" />
                 Map View
               </Button>
             </div>
@@ -120,7 +121,7 @@ const BrowseGemstones = () => {
           </p>
         </div>
 
-        {/* Gemstones Grid */}
+        {/* Content based on view mode */}
         {viewMode === "grid" ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredGemstones.map((gemstone, index) => (
@@ -134,24 +135,12 @@ const BrowseGemstones = () => {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-            <Map className="w-16 h-16 text-wandora-stone mx-auto mb-4" />
-            <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
-              Interactive Map Coming Soon
-            </h3>
-            <p className="text-wandora-stone max-w-md mx-auto">
-              We're working on an interactive map to help you explore gemstones by location. For now, enjoy browsing through our grid view!
-            </p>
-            <Button
-              onClick={() => setViewMode("grid")}
-              className="mt-6 bg-wandora-terracotta hover:bg-wandora-terracotta/90"
-            >
-              Switch to Grid View
-            </Button>
+          <div className="animate-fade-in">
+            <GemstoneMap />
           </div>
         )}
 
-        {filteredGemstones.length === 0 && (
+        {filteredGemstones.length === 0 && viewMode === "grid" && (
           <div className="text-center py-16">
             <Search className="w-16 h-16 text-wandora-stone mx-auto mb-4" />
             <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
