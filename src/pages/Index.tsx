@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowDown, Search, User, MapPin } from "lucide-react";
 import GemstoneCard from "@/components/GemstoneCard";
+import GemstoneDetailModal from "@/components/GemstoneDetailModal";
+import AuthorProfileModal from "@/components/AuthorProfileModal";
 
 const Index = () => {
+  const [selectedGemstone, setSelectedGemstone] = useState<any>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState<string>("");
+  const [isGemstoneModalOpen, setIsGemstoneModalOpen] = useState(false);
+  const [isAuthorModalOpen, setIsAuthorModalOpen] = useState(false);
+
   const featuredGemstones = [
     {
       id: 1,
@@ -34,6 +42,16 @@ const Index = () => {
       likes: 203
     }
   ];
+
+  const handleGemstoneClick = (gemstone: any) => {
+    setSelectedGemstone(gemstone);
+    setIsGemstoneModalOpen(true);
+  };
+
+  const handleAuthorClick = (authorName: string) => {
+    setSelectedAuthor(authorName);
+    setIsAuthorModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen">
@@ -97,7 +115,11 @@ const Index = () => {
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <GemstoneCard {...gemstone} />
+                <GemstoneCard 
+                  {...gemstone} 
+                  onCardClick={() => handleGemstoneClick(gemstone)}
+                  onAuthorClick={() => handleAuthorClick(gemstone.author)}
+                />
               </div>
             ))}
           </div>
@@ -180,6 +202,22 @@ const Index = () => {
           </Link>
         </div>
       </section>
+
+      {/* Modals */}
+      {selectedGemstone && (
+        <GemstoneDetailModal
+          isOpen={isGemstoneModalOpen}
+          onClose={() => setIsGemstoneModalOpen(false)}
+          onAuthorClick={handleAuthorClick}
+          gemstone={selectedGemstone}
+        />
+      )}
+      
+      <AuthorProfileModal
+        isOpen={isAuthorModalOpen}
+        onClose={() => setIsAuthorModalOpen(false)}
+        authorName={selectedAuthor}
+      />
     </div>
   );
 };
