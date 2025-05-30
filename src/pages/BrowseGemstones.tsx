@@ -1,14 +1,19 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, MapPin, Grid3X3 } from "lucide-react";
 import GemstoneCard from "@/components/GemstoneCard";
 import GemstoneMap from "@/components/GemstoneMap";
+import GemstoneDetailModal from "@/components/GemstoneDetailModal";
+import AuthorProfileModal from "@/components/AuthorProfileModal";
 
 const BrowseGemstones = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
+  const [selectedGemstone, setSelectedGemstone] = useState<any>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState<string>("");
+  const [isGemstoneModalOpen, setIsGemstoneModalOpen] = useState(false);
+  const [isAuthorModalOpen, setIsAuthorModalOpen] = useState(false);
 
   const gemstones = [
     {
@@ -76,6 +81,16 @@ const BrowseGemstones = () => {
       gemstone.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleGemstoneClick = (gemstone: any) => {
+    setSelectedGemstone(gemstone);
+    setIsGemstoneModalOpen(true);
+  };
+
+  const handleAuthorClick = (authorName: string) => {
+    setSelectedAuthor(authorName);
+    setIsAuthorModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-wandora-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -139,7 +154,11 @@ const BrowseGemstones = () => {
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <GemstoneCard {...gemstone} />
+                <GemstoneCard 
+                  {...gemstone} 
+                  onCardClick={() => handleGemstoneClick(gemstone)}
+                  onAuthorClick={() => handleAuthorClick(gemstone.author)}
+                />
               </div>
             ))}
           </div>
@@ -161,6 +180,20 @@ const BrowseGemstones = () => {
           </div>
         )}
       </div>
+
+      {/* Modals */}
+      <GemstoneDetailModal
+        isOpen={isGemstoneModalOpen}
+        onClose={() => setIsGemstoneModalOpen(false)}
+        onAuthorClick={handleAuthorClick}
+        gemstone={selectedGemstone}
+      />
+      
+      <AuthorProfileModal
+        isOpen={isAuthorModalOpen}
+        onClose={() => setIsAuthorModalOpen(false)}
+        authorName={selectedAuthor}
+      />
     </div>
   );
 };

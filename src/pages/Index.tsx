@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,23 +12,26 @@ const Index = () => {
       author: "Emma Kowalski",
       location: "Reykjavik, Iceland",
       image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop",
-      excerpt: "Discovering a secret waterfall that locals rarely share with tourists..."
+      excerpt: "Discovering a secret waterfall that locals rarely share with tourists...",
+      likes: 127
     },
     {
       id: 2,
-      title: "Street Art in Buenos Aires",
+      title: "Street Art in Buenos Aires", 
       author: "Carlos Rodriguez",
       location: "Buenos Aires, Argentina",
       image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop",
-      excerpt: "The hidden murals that tell stories of a neighborhood's transformation..."
+      excerpt: "The hidden murals that tell stories of a neighborhood's transformation...",
+      likes: 89
     },
     {
       id: 3,
       title: "Sunrise at Mount Fuji",
-      author: "Yuki Tanaka",
+      author: "Yuki Tanaka", 
       location: "Fujinomiya, Japan",
       image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop",
-      excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain..."
+      excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain...",
+      likes: 203
     }
   ];
 

@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
@@ -11,11 +10,28 @@ interface GemstoneCardProps {
   excerpt: string;
   sponsored?: boolean;
   likes: number;
+  onCardClick?: () => void;
+  onAuthorClick?: () => void;
 }
 
-const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = false, likes }: GemstoneCardProps) => {
+const GemstoneCard = ({ 
+  title, 
+  author, 
+  location, 
+  image, 
+  excerpt, 
+  sponsored = false, 
+  likes,
+  onCardClick,
+  onAuthorClick 
+}: GemstoneCardProps) => {
+  const handleAuthorClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onAuthorClick?.();
+  };
+
   return (
-    <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white relative">
+    <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white relative" onClick={onCardClick}>
       {sponsored && (
         <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold py-1 px-3 z-10">
           <span className="flex items-center justify-center">
@@ -42,7 +58,12 @@ const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = fal
         <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2 group-hover:text-wandora-terracotta transition-colors">
           {title}
         </h3>
-        <p className="text-sm text-wandora-stone mb-3">by {author}</p>
+        <p 
+          className="text-sm text-wandora-stone mb-3 cursor-pointer hover:text-wandora-terracotta transition-colors"
+          onClick={handleAuthorClick}
+        >
+          by {author}
+        </p>
         <p className="text-wandora-charcoal/80 leading-relaxed line-clamp-3">
           {excerpt}
         </p>
