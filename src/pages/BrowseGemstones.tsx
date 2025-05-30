@@ -16,7 +16,8 @@ const BrowseGemstones = () => {
       author: "Emma Kowalski",
       location: "Reykjavik, Iceland",
       image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop",
-      excerpt: "Discovering a secret waterfall that locals rarely share with tourists. After days of research and conversations with locals, I found myself standing before one of Iceland's most breathtaking hidden gems."
+      excerpt: "Discovering a secret waterfall that locals rarely share with tourists. After days of research and conversations with locals, I found myself standing before one of Iceland's most breathtaking hidden gems.",
+      sponsored: true
     },
     {
       id: 2,
@@ -32,7 +33,8 @@ const BrowseGemstones = () => {
       author: "Yuki Tanaka",
       location: "Fujinomiya, Japan",
       image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop",
-      excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain. At 4 AM, surrounded by pilgrims and photographers, I understood why this moment is considered sacred."
+      excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain. At 4 AM, surrounded by pilgrims and photographers, I understood why this moment is considered sacred.",
+      sponsored: true
     },
     {
       id: 4,

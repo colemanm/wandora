@@ -8,12 +8,20 @@ interface GemstoneCardProps {
   location: string;
   image: string;
   excerpt: string;
+  sponsored?: boolean;
 }
 
-const GemstoneCard = ({ title, author, location, image, excerpt }: GemstoneCardProps) => {
+const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = false }: GemstoneCardProps) => {
   return (
-    <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white">
-      <div className="relative h-64 overflow-hidden">
+    <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white relative">
+      {sponsored && (
+        <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold py-1 px-3 z-10">
+          <span className="flex items-center justify-center">
+            ✨ Sponsored
+          </span>
+        </div>
+      )}
+      <div className={`relative h-64 overflow-hidden ${sponsored ? 'mt-7' : ''}`}>
         <img 
           src={image} 
           alt={title}
