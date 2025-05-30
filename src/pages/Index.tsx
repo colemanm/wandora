@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowDown, Search, User } from "lucide-react";
+import { ArrowDown, Search, User, MapPin } from "lucide-react";
 import GemstoneCard from "@/components/GemstoneCard";
 
 const Index = () => {
@@ -149,7 +149,7 @@ const Index = () => {
 
             <div className="text-center group">
               <div className="w-16 h-16 bg-wandora-sage rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
-                <Map className="w-8 h-8 text-white" />
+                <MapPin className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
                 Inspire
