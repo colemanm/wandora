@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Heart } from "lucide-react";
 
 interface GemstoneCardProps {
   title: string;
@@ -9,9 +10,10 @@ interface GemstoneCardProps {
   image: string;
   excerpt: string;
   sponsored?: boolean;
+  likes: number;
 }
 
-const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = false }: GemstoneCardProps) => {
+const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = false, likes }: GemstoneCardProps) => {
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white relative">
       {sponsored && (
@@ -31,6 +33,10 @@ const GemstoneCard = ({ title, author, location, image, excerpt, sponsored = fal
         <Badge className="absolute top-4 left-4 bg-wandora-terracotta text-white">
           {location}
         </Badge>
+        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
+          <Heart className="w-4 h-4 text-red-400 fill-red-400" />
+          <span className="text-white text-sm font-medium">{likes}</span>
+        </div>
       </div>
       <CardContent className="p-6">
         <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2 group-hover:text-wandora-terracotta transition-colors">

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,8 @@ const BrowseGemstones = () => {
       location: "Reykjavik, Iceland",
       image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop",
       excerpt: "Discovering a secret waterfall that locals rarely share with tourists. After days of research and conversations with locals, I found myself standing before one of Iceland's most breathtaking hidden gems.",
-      sponsored: true
+      sponsored: true,
+      likes: 127
     },
     {
       id: 2,
@@ -25,7 +27,8 @@ const BrowseGemstones = () => {
       author: "Carlos Rodriguez",
       location: "Buenos Aires, Argentina",
       image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop",
-      excerpt: "The hidden murals that tell stories of a neighborhood's transformation. Walking through the winding streets of Palermo, each wall seemed to whisper tales of resilience and creativity."
+      excerpt: "The hidden murals that tell stories of a neighborhood's transformation. Walking through the winding streets of Palermo, each wall seemed to whisper tales of resilience and creativity.",
+      likes: 89
     },
     {
       id: 3,
@@ -34,7 +37,8 @@ const BrowseGemstones = () => {
       location: "Fujinomiya, Japan",
       image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop",
       excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain. At 4 AM, surrounded by pilgrims and photographers, I understood why this moment is considered sacred.",
-      sponsored: true
+      sponsored: true,
+      likes: 203
     },
     {
       id: 4,
@@ -42,7 +46,8 @@ const BrowseGemstones = () => {
       author: "Lisa Chen",
       location: "Taipei, Taiwan",
       image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&h=600&fit=crop",
-      excerpt: "Following the scent of xiaolongbao through narrow alleyways. The real magic of Taipei happens after sunset, when the city transforms into a food lover's paradise."
+      excerpt: "Following the scent of xiaolongbao through narrow alleyways. The real magic of Taipei happens after sunset, when the city transforms into a food lover's paradise.",
+      likes: 156
     },
     {
       id: 5,
@@ -50,7 +55,8 @@ const BrowseGemstones = () => {
       author: "Ahmed Hassan",
       location: "Merzouga, Morocco",
       image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop",
-      excerpt: "Sleeping under a blanket of stars with nothing but sand dunes for miles. The silence of the Sahara is unlike anything I've ever experienced - it's profound and transformative."
+      excerpt: "Sleeping under a blanket of stars with nothing but sand dunes for miles. The silence of the Sahara is unlike anything I've ever experienced - it's profound and transformative.",
+      likes: 74
     },
     {
       id: 6,
@@ -58,7 +64,8 @@ const BrowseGemstones = () => {
       author: "Siriporn Wannakul",
       location: "Bangkok, Thailand",
       image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?w=800&h=600&fit=crop",
-      excerpt: "Navigating the colorful chaos of Thailand's most authentic floating market. Away from tourist crowds, vendors sell fresh fruits and handmade goods from their wooden boats."
+      excerpt: "Navigating the colorful chaos of Thailand's most authentic floating market. Away from tourist crowds, vendors sell fresh fruits and handmade goods from their wooden boats.",
+      likes: 112
     }
   ];
 
