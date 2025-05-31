@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -39,17 +38,11 @@ const Index = () => {
             Uncover authentic travel stories from hidden corners of the world. 
             Create your own adventures and inspire wanderers everywhere.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link to="/browse">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg">
                 <Search className="w-5 h-5 mr-2" />
                 Explore Gemstones
-              </Button>
-            </Link>
-            <Link to="/share">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-3 text-lg">
-                <User className="w-5 h-5 mr-2" />
-                Create Your Story
               </Button>
             </Link>
           </div>
