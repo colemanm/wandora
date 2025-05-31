@@ -13,18 +13,18 @@ const Navigation = () => {
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b border-wandora-lighter sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo as Home Button */}
-          <Link to="/" className="group">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo as Home Button - Made larger and more prominent */}
+          <Link to="/" className="group flex-shrink-0">
             <img 
               src="/lovable-uploads/e8377627-2912-43bb-9240-47ce9996a2fe.png" 
               alt="Wandora Logo" 
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-200"
+              className="w-16 h-16 md:w-20 md:h-20 group-hover:scale-105 transition-transform duration-200 drop-shadow-sm"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Adjusted spacing */}
+          <div className="hidden md:flex items-center space-x-10">
             <Link
               to="/"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
