@@ -69,7 +69,7 @@ const Index = () => {
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 animate-fade-in">
           <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6">
             Discover Travel
-            <span className="block text-wandora-terracotta">Gemstones</span>
+            <span className="block text-wandora-primary">Gemstones</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Uncover authentic travel stories from hidden corners of the world. 
@@ -77,13 +77,13 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/browse">
-              <Button size="lg" className="bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white px-8 py-3 text-lg">
+              <Button size="lg" className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-8 py-3 text-lg">
                 <Search className="w-5 h-5 mr-2" />
                 Explore Gemstones
               </Button>
             </Link>
             <Link to="/share">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-wandora-charcoal px-8 py-3 text-lg">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-wandora-dark px-8 py-3 text-lg">
                 <User className="w-5 h-5 mr-2" />
                 Share Your Story
               </Button>
@@ -97,13 +97,13 @@ const Index = () => {
       </section>
 
       {/* Featured Gemstones Section */}
-      <section className="py-20 bg-wandora-cream">
+      <section className="py-20 bg-wandora-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-wandora-charcoal mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-wandora-dark mb-6">
               Featured Gemstones
             </h2>
-            <p className="text-lg text-wandora-stone max-w-2xl mx-auto">
+            <p className="text-lg text-wandora-gray max-w-2xl mx-auto">
               Discover extraordinary moments from travelers who ventured beyond the ordinary
             </p>
           </div>
@@ -126,7 +126,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Link to="/browse">
-              <Button size="lg" variant="outline" className="border-2 border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white px-8 py-3">
+              <Button size="lg" variant="outline" className="border-2 border-wandora-primary text-wandora-primary hover:bg-wandora-primary hover:text-white px-8 py-3">
                 View All Gemstones
               </Button>
             </Link>
@@ -138,47 +138,47 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-wandora-charcoal mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-wandora-dark mb-6">
               How Wandora Works
             </h2>
-            <p className="text-lg text-wandora-stone max-w-2xl mx-auto">
+            <p className="text-lg text-wandora-gray max-w-2xl mx-auto">
               Join our community of storytellers and discover the world through authentic experiences
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
             <div className="text-center group">
-              <div className="w-16 h-16 bg-wandora-sage rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+              <div className="w-16 h-16 bg-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
                 <Search className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
+              <h3 className="font-serif text-2xl font-semibold text-wandora-dark mb-4">
                 Discover
               </h3>
-              <p className="text-wandora-stone leading-relaxed">
+              <p className="text-wandora-gray leading-relaxed">
                 Browse authentic travel stories organized by location. Find hidden gems and unique experiences shared by fellow adventurers.
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="w-16 h-16 bg-wandora-terracotta rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+              <div className="w-16 h-16 bg-wandora-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
                 <User className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
+              <h3 className="font-serif text-2xl font-semibold text-wandora-dark mb-4">
                 Share
               </h3>
-              <p className="text-wandora-stone leading-relaxed">
+              <p className="text-wandora-gray leading-relaxed">
                 Tell your own travel story. Share that magical moment, hidden spot, or cultural encounter that made your journey unforgettable.
               </p>
             </div>
 
             <div className="text-center group">
-              <div className="w-16 h-16 bg-wandora-sage rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+              <div className="w-16 h-16 bg-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-4">
+              <h3 className="font-serif text-2xl font-semibold text-wandora-dark mb-4">
                 Inspire
               </h3>
-              <p className="text-wandora-stone leading-relaxed">
+              <p className="text-wandora-gray leading-relaxed">
                 Help others plan their adventures. Your gemstone might be the spark that ignites someone's next great journey.
               </p>
             </div>
@@ -187,7 +187,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-wandora-terracotta to-wandora-sage">
+      <section className="py-20 bg-gradient-to-r from-wandora-primary to-wandora-secondary">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Share Your Adventure?
@@ -196,7 +196,7 @@ const Index = () => {
             Every journey has a story worth telling. Share your travel gemstone and become part of our global community of explorers.
           </p>
           <Link to="/share">
-            <Button size="lg" className="bg-white text-wandora-terracotta hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+            <Button size="lg" className="bg-white text-wandora-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
               Start Sharing Your Story
             </Button>
           </Link>

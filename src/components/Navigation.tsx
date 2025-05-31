@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Book } from "lucide-react";
@@ -11,15 +10,15 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-wandora-sand sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-wandora-lighter sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-wandora-terracotta to-wandora-sage rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+            <div className="w-8 h-8 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <Book className="w-4 h-4 text-white" />
             </div>
-            <span className="font-serif text-xl font-bold text-wandora-charcoal">
+            <span className="font-serif text-xl font-bold text-wandora-dark">
               Wandora
             </span>
           </Link>
@@ -28,38 +27,38 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-sm font-medium transition-colors hover:text-wandora-terracotta ${
-                isActive("/") ? "text-wandora-terracotta" : "text-wandora-charcoal"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+                isActive("/") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
               Home
             </Link>
             <Link
               to="/browse"
-              className={`text-sm font-medium transition-colors hover:text-wandora-terracotta ${
-                isActive("/browse") ? "text-wandora-terracotta" : "text-wandora-charcoal"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+                isActive("/browse") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
               Browse Gemstones
             </Link>
             <Link
               to="/about"
-              className={`text-sm font-medium transition-colors hover:text-wandora-terracotta ${
-                isActive("/about") ? "text-wandora-terracotta" : "text-wandora-charcoal"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+                isActive("/about") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
               About
             </Link>
             <Link
               to="/contact"
-              className={`text-sm font-medium transition-colors hover:text-wandora-terracotta ${
-                isActive("/contact") ? "text-wandora-terracotta" : "text-wandora-charcoal"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+                isActive("/contact") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
               Contact
             </Link>
             <Link to="/share">
-              <Button className="bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white px-6">
+              <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
                 Share Your Gemstone
               </Button>
             </Link>
@@ -71,7 +70,7 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-wandora-charcoal"
+              className="text-wandora-dark"
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -80,12 +79,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden border-t border-wandora-sand">
+          <div className="md:hidden border-t border-wandora-lighter">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 to="/"
                 className={`block px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/") ? "text-wandora-terracotta bg-wandora-cream" : "text-wandora-charcoal"
+                  isActive("/") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -94,7 +93,7 @@ const Navigation = () => {
               <Link
                 to="/browse"
                 className={`block px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/browse") ? "text-wandora-terracotta bg-wandora-cream" : "text-wandora-charcoal"
+                  isActive("/browse") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -103,7 +102,7 @@ const Navigation = () => {
               <Link
                 to="/about"
                 className={`block px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/about") ? "text-wandora-terracotta bg-wandora-cream" : "text-wandora-charcoal"
+                  isActive("/about") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -112,7 +111,7 @@ const Navigation = () => {
               <Link
                 to="/contact"
                 className={`block px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/contact") ? "text-wandora-terracotta bg-wandora-cream" : "text-wandora-charcoal"
+                  isActive("/contact") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -123,7 +122,7 @@ const Navigation = () => {
                 className="block px-3 py-2"
                 onClick={() => setIsOpen(false)}
               >
-                <Button className="w-full bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white">
+                <Button className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white">
                   Share Your Gemstone
                 </Button>
               </Link>

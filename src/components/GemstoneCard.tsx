@@ -46,7 +46,7 @@ const GemstoneCard = ({
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <Badge className="absolute top-4 left-4 bg-wandora-terracotta text-white">
+        <Badge className="absolute top-4 left-4 bg-wandora-primary text-white">
           {location}
         </Badge>
         <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
@@ -55,16 +55,16 @@ const GemstoneCard = ({
         </div>
       </div>
       <CardContent className="p-6">
-        <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2 group-hover:text-wandora-terracotta transition-colors">
+        <h3 className="font-serif text-xl font-semibold text-wandora-dark mb-2 group-hover:text-wandora-primary transition-colors">
           {title}
         </h3>
         <p 
-          className="text-sm text-wandora-stone mb-3 cursor-pointer hover:text-wandora-terracotta transition-colors"
+          className="text-sm text-wandora-gray mb-3 cursor-pointer hover:text-wandora-primary transition-colors"
           onClick={handleAuthorClick}
         >
           by {author}
         </p>
-        <p className="text-wandora-charcoal/80 leading-relaxed line-clamp-3">
+        <p className="text-wandora-dark/80 leading-relaxed line-clamp-3">
           {excerpt}
         </p>
       </CardContent>
