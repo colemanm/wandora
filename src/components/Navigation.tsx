@@ -17,7 +17,7 @@ const Navigation = () => {
           {/* Logo as Home Button */}
           <Link to="/" className="group">
             <img 
-              src="/lovable-uploads/9f4e7c14-9efa-46fd-9bd4-0829ac39bf7c.png" 
+              src="/lovable-uploads/e8377627-2912-43bb-9240-47ce9996a2fe.png" 
               alt="Wandora Logo" 
               className="w-10 h-10 group-hover:scale-110 transition-transform duration-200"
             />
