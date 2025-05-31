@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -35,8 +36,7 @@ const Index = () => {
             <span className="block text-purple-400">Gemstones</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            Uncover authentic travel stories from hidden corners of the world. 
-            Create your own adventures and inspire wanderers everywhere.
+            Hidden stories. Authentic adventures. Real wanderers.
           </p>
           <div className="flex justify-center">
             <Link to="/browse">
