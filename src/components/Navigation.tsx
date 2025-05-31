@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Book } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -16,9 +16,11 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <Book className="w-4 h-4 text-white" />
-            </div>
+            <img 
+              src="/lovable-uploads/39226ff4-763a-4008-b768-583954bcf3fa.png" 
+              alt="Wandora Logo" 
+              className="w-8 h-8 group-hover:scale-110 transition-transform duration-200"
+            />
             <span className="font-serif text-xl font-bold text-wandora-dark">
               Wandora
             </span>
