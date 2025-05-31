@@ -60,10 +60,10 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/lovable-uploads/e58e521f-0e91-4ea1-be7b-531876e2f267.png')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&h=1080&fit=crop&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 animate-fade-in">
