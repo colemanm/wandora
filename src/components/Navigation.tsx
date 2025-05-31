@@ -14,16 +14,13 @@ const Navigation = () => {
     <nav className="bg-white/95 backdrop-blur-sm border-b border-wandora-lighter sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          {/* Logo as Home Button */}
+          <Link to="/" className="group">
             <img 
-              src="/lovable-uploads/39226ff4-763a-4008-b768-583954bcf3fa.png" 
+              src="/lovable-uploads/9f4e7c14-9efa-46fd-9bd4-0829ac39bf7c.png" 
               alt="Wandora Logo" 
-              className="w-8 h-8 group-hover:scale-110 transition-transform duration-200"
+              className="w-10 h-10 group-hover:scale-110 transition-transform duration-200"
             />
-            <span className="font-serif text-xl font-bold text-wandora-dark">
-              Wandora
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
