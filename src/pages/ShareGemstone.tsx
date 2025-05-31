@@ -22,8 +22,8 @@ const ShareGemstone = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Thank you for sharing!",
-      description: "Your travel gemstone has been submitted and will be reviewed by our team.",
+      title: "Thank you for creating!",
+      description: "Your travel gemstone has been created and will be reviewed by our team.",
     });
     setFormData({
       title: "",
@@ -49,10 +49,10 @@ const ShareGemstone = () => {
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-wandora-charcoal mb-6">
-            Share Your Travel Gemstone
+            Create Your Travel Gemstone
           </h1>
           <p className="text-lg text-wandora-stone max-w-2xl mx-auto">
-            Every journey has a story worth telling. Share your unique travel experience and inspire fellow wanderers around the world.
+            Every journey has a story worth telling. Create your unique travel experience and inspire fellow wanderers around the world.
           </p>
         </div>
 
@@ -186,7 +186,7 @@ const ShareGemstone = () => {
                     type="submit" 
                     className="w-full bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white py-3 text-lg"
                   >
-                    Share Your Gemstone
+                    Create Your Gemstone
                   </Button>
                 </form>
               </CardContent>

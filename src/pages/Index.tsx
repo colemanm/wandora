@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -36,7 +37,7 @@ const Index = () => {
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Uncover authentic travel stories from hidden corners of the world. 
-            Share your own adventures and inspire wanderers everywhere.
+            Create your own adventures and inspire wanderers everywhere.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/browse">
@@ -48,7 +49,7 @@ const Index = () => {
             <Link to="/share">
               <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-3 text-lg">
                 <User className="w-5 h-5 mr-2" />
-                Share Your Story
+                Create Your Story
               </Button>
             </Link>
           </div>
@@ -89,10 +90,10 @@ const Index = () => {
                 <User className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
-                Share
+                Create
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Tell your own travel story. Share that magical moment, hidden spot, or cultural encounter that made your journey unforgettable.
+                Tell your own travel story. Create that magical moment, hidden spot, or cultural encounter that made your journey unforgettable.
               </p>
             </div>
 
@@ -115,14 +116,14 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-r from-purple-600 to-purple-800">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Share Your Adventure?
+            Ready to Create Your Adventure?
           </h2>
           <p className="text-xl text-white/90 mb-8 leading-relaxed">
-            Every journey has a story worth telling. Share your travel gemstone and become part of our global community of explorers.
+            Every journey has a story worth telling. Create your travel gemstone and become part of our global community of explorers.
           </p>
           <Link to="/share">
             <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-              Start Sharing Your Story
+              Start Creating Your Story
             </Button>
           </Link>
         </div>

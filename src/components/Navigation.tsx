@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Book } from "lucide-react";
@@ -59,7 +60,7 @@ const Navigation = () => {
             </Link>
             <Link to="/share">
               <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
-                Share Your Gemstone
+                Create a Gemstone
               </Button>
             </Link>
           </div>
@@ -123,7 +124,7 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
               >
                 <Button className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white">
-                  Share Your Gemstone
+                  Create a Gemstone
                 </Button>
               </Link>
             </div>
