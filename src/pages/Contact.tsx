@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, User, Book, MessageSquare, Clock, Users } from "lucide-react";
+import { Mail, User, Book, MessageSquare, Clock, Users, Send, Phone, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -41,7 +41,7 @@ const Contact = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-slate-50 to-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-20 h-20 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
             <MessageSquare className="w-10 h-10 text-white" />
           </div>
@@ -55,21 +55,18 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Main Content */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
             <div>
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-wandora-primary rounded-lg flex items-center justify-center mr-4">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <h2 className="font-serif text-3xl font-bold text-gray-900">Send us a Message</h2>
-              </div>
+              <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Have a question, suggestion, or just want to say hello? We're all ears! 
                 Fill out the form and we'll get back to you as soon as possible.
               </p>
+              
               <Card className="bg-white shadow-lg border-0">
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -142,22 +139,21 @@ const Contact = () => {
                       type="submit" 
                       className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white py-3 text-lg"
                     >
+                      <Send className="w-5 h-5 mr-2" />
                       Send Message
                     </Button>
                   </form>
                 </CardContent>
               </Card>
             </div>
+
+            {/* Contact Information */}
             <div>
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-wandora-secondary rounded-lg flex items-center justify-center mr-4">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <h2 className="font-serif text-3xl font-bold text-gray-900">How Can We Help?</h2>
-              </div>
+              <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">How Can We Help?</h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Our team is here to support you every step of the way. Here are some ways we can assist you.
               </p>
+              
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-16 h-16 bg-wandora-primary rounded-full flex items-center justify-center flex-shrink-0">
@@ -269,10 +265,19 @@ const Contact = () => {
             Let's start the conversation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-wandora-primary hover:bg-gray-100 px-8 py-3 font-semibold">
+            <Button 
+              size="lg" 
+              className="bg-white text-wandora-primary hover:bg-gray-100 px-8 py-3 font-semibold transition-colors"
+            >
+              <MessageSquare className="w-5 h-5 mr-2" />
               Send us a Message
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-wandora-primary px-8 py-3 font-semibold">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white hover:text-wandora-primary px-8 py-3 font-semibold bg-transparent transition-colors"
+            >
+              <Users className="w-5 h-5 mr-2" />
               Join Our Community
             </Button>
           </div>
