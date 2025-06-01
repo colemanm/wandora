@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,18 +5,23 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Heart, BookmarkIcon, PenTool, MapPin, Calendar, Users, Edit2 } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import GemstoneCard from "@/components/GemstoneCard";
 import GemstoneDetailModal from "@/components/GemstoneDetailModal";
 import AuthorProfileModal from "@/components/AuthorProfileModal";
+import ProfileEditForm from "@/components/ProfileEditForm";
+import { useToast } from "@/hooks/use-toast";
 
 const Profile = () => {
   const [selectedGemstone, setSelectedGemstone] = useState<any>(null);
   const [selectedAuthor, setSelectedAuthor] = useState<string>("");
   const [isGemstoneModalOpen, setIsGemstoneModalOpen] = useState(false);
   const [isAuthorModalOpen, setIsAuthorModalOpen] = useState(false);
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
+  const { toast } = useToast();
 
   // Mock user data - in a real app, this would come from authentication/database
-  const userData = {
+  const [userData, setUserData] = useState({
     name: "Alex Johnson",
     email: "alex.johnson@example.com",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
@@ -31,7 +35,7 @@ const Profile = () => {
       followers: 127,
       following: 89
     }
-  };
+  });
 
   // Mock gemstones data - would be filtered by user in real app
   const publishedGemstones = [
@@ -99,8 +103,13 @@ const Profile = () => {
     setIsAuthorModalOpen(true);
   };
 
-  const handleEditProfile = () => {
-    window.open('/profile/edit', '_blank');
+  const handleSaveProfile = (updatedData: any) => {
+    setUserData(prev => ({ ...prev, ...updatedData }));
+    setIsEditProfileOpen(false);
+    toast({
+      title: "Profile updated",
+      description: "Your profile has been successfully updated.",
+    });
   };
 
   return (
@@ -118,15 +127,25 @@ const Profile = () => {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                   <h1 className="font-serif text-3xl font-bold text-wandora-charcoal">{userData.name}</h1>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"
-                    onClick={handleEditProfile}
-                  >
-                    <Edit2 className="w-4 h-4 mr-2" />
-                    Edit Profile
-                  </Button>
+                  <Sheet open={isEditProfileOpen} onOpenChange={setIsEditProfileOpen}>
+                    <SheetTrigger asChild>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"
+                      >
+                        <Edit2 className="w-4 h-4 mr-2" />
+                        Edit Profile
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-[400px] sm:w-[540px]">
+                      <ProfileEditForm
+                        userData={userData}
+                        onSave={handleSaveProfile}
+                        onCancel={() => setIsEditProfileOpen(false)}
+                      />
+                    </SheetContent>
+                  </Sheet>
                 </div>
                 
                 <p className="text-wandora-stone mb-4 max-w-2xl">{userData.bio}</p>

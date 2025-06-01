@@ -1,0 +1,132 @@
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Camera, Save, X } from "lucide-react";
+
+interface ProfileEditFormProps {
+  userData: {
+    name: string;
+    email: string;
+    avatar: string;
+    bio: string;
+    location: string;
+  };
+  onSave: (updatedData: any) => void;
+  onCancel: () => void;
+}
+
+const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) => {
+  const [formData, setFormData] = useState({
+    name: userData.name,
+    email: userData.email,
+    bio: userData.bio,
+    location: userData.location,
+    avatar: userData.avatar
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSave(formData);
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold text-wandora-charcoal">Edit Profile</h2>
+        <Button variant="ghost" size="sm" onClick={onCancel}>
+          <X className="w-4 h-4" />
+        </Button>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Avatar Section */}
+        <div className="flex flex-col items-center gap-4">
+          <Avatar className="w-24 h-24">
+            <AvatarImage src={formData.avatar} alt={formData.name} />
+            <AvatarFallback className="text-lg">
+              {formData.name.split(' ').map(n => n[0]).join('')}
+            </AvatarFallback>
+          </Avatar>
+          <Button variant="outline" size="sm" type="button">
+            <Camera className="w-4 h-4 mr-2" />
+            Change Photo
+          </Button>
+        </div>
+
+        {/* Form Fields */}
+        <div className="space-y-4">
+          <div>
+            <Label htmlFor="name">Full Name</Label>
+            <Input
+              id="name"
+              value={formData.name}
+              onChange={(e) => handleChange('name', e.target.value)}
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleChange('email', e.target.value)}
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="location">Location</Label>
+            <Input
+              id="location"
+              value={formData.location}
+              onChange={(e) => handleChange('location', e.target.value)}
+              placeholder="Enter your location"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="bio">Bio</Label>
+            <Textarea
+              id="bio"
+              value={formData.bio}
+              onChange={(e) => handleChange('bio', e.target.value)}
+              placeholder="Tell us about yourself..."
+              rows={4}
+            />
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 pt-4">
+          <Button 
+            type="submit"
+            className="flex-1 bg-wandora-terracotta hover:bg-wandora-terracotta/90"
+          >
+            <Save className="w-4 h-4 mr-2" />
+            Save Changes
+          </Button>
+          <Button 
+            type="button" 
+            variant="outline" 
+            onClick={onCancel}
+            className="flex-1"
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default ProfileEditForm;
