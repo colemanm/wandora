@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,7 @@ import AuthorProfileModal from "@/components/AuthorProfileModal";
 
 const BrowseGemstones = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "map">("map");
   const [selectedGemstone, setSelectedGemstone] = useState<any>(null);
   const [selectedAuthor, setSelectedAuthor] = useState<string>("");
   const [isGemstoneModalOpen, setIsGemstoneModalOpen] = useState(false);
@@ -107,49 +106,51 @@ const BrowseGemstones = () => {
           </p>
         </div>
 
-        {/* Search and Filter Bar */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-12 animate-slide-up">
-          <div className="flex flex-col lg:flex-row gap-4 items-center">
-            <div className="relative flex-1 w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-wandora-stone w-5 h-5" />
-              <Input
-                type="text"
-                placeholder="Search by location, title, or author..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 py-3 text-lg border-wandora-sand focus:border-wandora-terracotta"
-              />
-            </div>
-            <div className="flex gap-2 items-center">
-              <Button
-                variant={viewMode === "grid" ? "default" : "outline"}
-                onClick={() => setViewMode("grid")}
-                className={`flex items-center justify-center ${viewMode === "grid" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}`}
-              >
-                <Grid3X3 className="w-4 h-4 mr-2" />
-                Grid View
-              </Button>
-              <Button
-                variant={viewMode === "map" ? "default" : "outline"}
-                onClick={() => setViewMode("map")}
-                className={`flex items-center justify-center ${viewMode === "map" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}`}
-              >
-                <MapPin className="w-4 h-4 mr-2" />
-                Map View
-              </Button>
-            </div>
+        {/* Search Bar */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8 animate-slide-up">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-wandora-stone w-5 h-5" />
+            <Input
+              type="text"
+              placeholder="Search by location, title, or author..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 py-3 text-lg border-wandora-sand focus:border-wandora-terracotta"
+            />
           </div>
         </div>
 
-        {/* Results */}
-        <div className="mb-8">
+        {/* Map View */}
+        <div className="mb-8 animate-fade-in">
+          <GemstoneMap />
+        </div>
+
+        {/* Toggle Button and Results */}
+        <div className="mb-8 flex justify-between items-center">
           <p className="text-wandora-stone">
             Showing {filteredGemstones.length} of {gemstones.length} gemstones
           </p>
+          <Button
+            variant="outline"
+            onClick={() => setViewMode(viewMode === "map" ? "grid" : "map")}
+            className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"
+          >
+            {viewMode === "map" ? (
+              <>
+                <Grid3X3 className="w-4 h-4 mr-2" />
+                View as Grid
+              </>
+            ) : (
+              <>
+                <MapPin className="w-4 h-4 mr-2" />
+                View on Map
+              </>
+            )}
+          </Button>
         </div>
 
-        {/* Content based on view mode */}
-        {viewMode === "grid" ? (
+        {/* Grid View (when toggled) */}
+        {viewMode === "grid" && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredGemstones.map((gemstone, index) => (
               <div 
@@ -164,10 +165,6 @@ const BrowseGemstones = () => {
                 />
               </div>
             ))}
-          </div>
-        ) : (
-          <div className="animate-fade-in">
-            <GemstoneMap />
           </div>
         )}
 
