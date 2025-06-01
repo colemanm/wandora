@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, User, Book } from "lucide-react";
+import { Mail, User, Book, MessageSquare, Clock, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -38,184 +38,246 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-wandora-cream py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-wandora-charcoal mb-6">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-50 to-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+            <MessageSquare className="w-10 h-10 text-white" />
+          </div>
+          <h1 className="font-serif text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Get in Touch
           </h1>
-          <p className="text-lg text-wandora-stone max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We'd love to hear from you! Whether you have questions, suggestions, or want to partner with us, 
             we're here to help make your Wandora experience exceptional.
           </p>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="bg-white shadow-sm animate-slide-up">
-              <CardHeader>
-                <CardTitle className="font-serif text-2xl text-wandora-charcoal">
-                  Send us a Message
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+      {/* Contact Form Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-wandora-primary rounded-lg flex items-center justify-center mr-4">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="font-serif text-3xl font-bold text-gray-900">Send us a Message</h2>
+              </div>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Have a question, suggestion, or just want to say hello? We're all ears! 
+                Fill out the form and we'll get back to you as soon as possible.
+              </p>
+              <Card className="bg-white shadow-lg border-0">
+                <CardContent className="p-8">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+                          Your Name *
+                        </label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Your full name"
+                          className="border-gray-200 focus:border-wandora-primary"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+                          Email Address *
+                        </label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="your@email.com"
+                          className="border-gray-200 focus:border-wandora-primary"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-wandora-charcoal mb-2">
-                        Your Name *
+                      <label htmlFor="subject" className="block text-sm font-medium text-gray-900 mb-2">
+                        Subject *
                       </label>
                       <Input
-                        id="name"
-                        name="name"
+                        id="subject"
+                        name="subject"
                         type="text"
                         required
-                        value={formData.name}
+                        value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Your full name"
-                        className="border-wandora-sand focus:border-wandora-terracotta"
+                        placeholder="What's this about?"
+                        className="border-gray-200 focus:border-wandora-primary"
                       />
                     </div>
+
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-wandora-charcoal mb-2">
-                        Email Address *
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                        Message *
                       </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
+                      <Textarea
+                        id="message"
+                        name="message"
                         required
-                        value={formData.email}
+                        value={formData.message}
                         onChange={handleChange}
-                        placeholder="your@email.com"
-                        className="border-wandora-sand focus:border-wandora-terracotta"
+                        placeholder="Tell us more about your inquiry..."
+                        rows={6}
+                        className="border-gray-200 focus:border-wandora-primary resize-none"
                       />
                     </div>
-                  </div>
 
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-wandora-charcoal mb-2">
-                      Subject *
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What's this about?"
-                      className="border-wandora-sand focus:border-wandora-terracotta"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-wandora-charcoal mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us more about your inquiry..."
-                      rows={6}
-                      className="border-wandora-sand focus:border-wandora-terracotta resize-none"
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white py-3 text-lg"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <Card className="bg-white shadow-sm animate-fade-in">
-              <CardHeader>
-                <CardTitle className="font-serif text-xl text-wandora-charcoal">
-                  How Can We Help?
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white py-3 text-lg"
+                    >
+                      Send Message
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-wandora-secondary rounded-lg flex items-center justify-center mr-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="font-serif text-3xl font-bold text-gray-900">How Can We Help?</h2>
+              </div>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Our team is here to support you every step of the way. Here are some ways we can assist you.
+              </p>
+              <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-wandora-terracotta/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <User className="w-5 h-5 text-wandora-terracotta" />
+                  <div className="w-16 h-16 bg-wandora-primary rounded-full flex items-center justify-center flex-shrink-0">
+                    <User className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-wandora-charcoal mb-1">General Inquiries</h4>
-                    <p className="text-sm text-wandora-stone">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">General Inquiries</h4>
+                    <p className="text-gray-600 leading-relaxed">
                       Questions about Wandora, how it works, or need help with your account.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-wandora-sage/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Book className="w-5 h-5 text-wandora-sage" />
+                  <div className="w-16 h-16 bg-wandora-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                    <Book className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-wandora-charcoal mb-1">Partnerships</h4>
-                    <p className="text-sm text-wandora-stone">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">Partnerships</h4>
+                    <p className="text-gray-600 leading-relaxed">
                       Interested in collaborating with Wandora or becoming a featured contributor.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-wandora-terracotta/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-wandora-terracotta" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-wandora-charcoal mb-1">Press & Media</h4>
-                    <p className="text-sm text-wandora-stone">
+                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">Press & Media</h4>
+                    <p className="text-gray-600 leading-relaxed">
                       Press inquiries, media kits, and interview requests.
                     </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <Card className="bg-gradient-to-br from-wandora-terracotta to-wandora-sage text-white shadow-sm">
-              <CardContent className="p-6">
-                <h3 className="font-serif text-xl font-semibold mb-3">
-                  Join Our Community
+      {/* Response Time Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl font-bold text-gray-900 mb-6">
+              What to Expect
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We're committed to providing you with timely and helpful responses to all your inquiries.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-wandora-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Clock className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  Quick Response
                 </h3>
-                <p className="text-white/90 mb-4 text-sm">
-                  Connect with fellow travelers, get updates on new features, and be the first to know about community events.
+                <p className="text-gray-600 leading-relaxed">
+                  We typically respond to all inquiries within 24-48 hours during business days.
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-white text-white hover:bg-white hover:text-wandora-terracotta"
-                >
-                  Follow Our Journey
-                </Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-sm">
-              <CardContent className="p-6">
-                <h3 className="font-serif text-lg font-semibold text-wandora-charcoal mb-3">
-                  Response Time
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <User className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  Personal Touch
                 </h3>
-                <p className="text-sm text-wandora-stone">
-                  We typically respond to all inquiries within 24-48 hours. For urgent matters, 
-                  please mark your subject line with "URGENT" and we'll prioritize your message.
+                <p className="text-gray-600 leading-relaxed">
+                  Every message is read by a real person who cares about your Wandora experience.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <MessageSquare className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-4">
+                  Follow-up
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  We'll follow up to ensure your questions were answered and you're satisfied with our response.
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-wandora-primary to-wandora-secondary">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-4xl font-bold text-white mb-6">
+            Ready to Connect?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+            We're excited to hear from you and help you make the most of your Wandora journey. 
+            Let's start the conversation today.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-wandora-primary hover:bg-gray-100 px-8 py-3 font-semibold">
+              Send us a Message
+            </Button>
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-wandora-primary px-8 py-3 font-semibold">
+              Join Our Community
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
