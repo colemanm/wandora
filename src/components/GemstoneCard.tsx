@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
@@ -32,20 +33,22 @@ const GemstoneCard = ({
 
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-white relative" onClick={onCardClick}>
-      {sponsored && (
-        <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold py-1 px-3 z-10">
-          <span className="flex items-center justify-center">
-            ✨ Sponsored
-          </span>
-        </div>
-      )}
-      <div className={`relative h-64 overflow-hidden ${sponsored ? 'mt-7' : ''}`}>
+      <div className="relative h-64 overflow-hidden">
         <img 
           src={image} 
           alt={title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {sponsored && (
+          <div className="absolute top-0 right-0 z-10">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-6 py-2 transform rotate-12 translate-x-4 -translate-y-2 shadow-lg">
+              SPONSORED
+            </div>
+          </div>
+        )}
+        
         <Badge className="absolute top-4 left-4 bg-wandora-primary text-white">
           {location}
         </Badge>
