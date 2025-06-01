@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -23,8 +23,8 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Desktop Navigation - Adjusted spacing */}
-          <div className="hidden md:flex items-center space-x-10">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
@@ -40,6 +40,15 @@ const Navigation = () => {
               }`}
             >
               Browse Gemstones
+            </Link>
+            <Link
+              to="/profile"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
+                isActive("/profile") ? "text-wandora-primary" : "text-wandora-dark"
+              }`}
+            >
+              <User className="w-4 h-4" />
+              Profile
             </Link>
             <Link
               to="/about"
@@ -98,6 +107,16 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Browse Gemstones
+              </Link>
+              <Link
+                to="/profile"
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                  isActive("/profile") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <User className="w-4 h-4" />
+                Profile
               </Link>
               <Link
                 to="/about"
