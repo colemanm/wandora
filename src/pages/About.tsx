@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ const About = () => {
       {/* Mission Section */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="animate-slide-up">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-wandora-charcoal mb-6">
                 Our Mission
@@ -41,13 +40,6 @@ const About = () => {
                   Share Your Story
                 </Button>
               </Link>
-            </div>
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&h=800&fit=crop" 
-                alt="Mountain landscape"
-                className="rounded-lg shadow-2xl animate-fade-in"
-              />
             </div>
           </div>
         </div>
