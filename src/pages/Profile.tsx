@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Heart, BookmarkIcon, PenTool, MapPin, Calendar, Users, Edit2 } from "lucide-react";
+import { Heart, BookmarkIcon, PenTool, MapPin, Calendar, Users, Edit2, Crown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import GemstoneCard from "@/components/GemstoneCard";
 import GemstoneDetailModal from "@/components/GemstoneDetailModal";
@@ -28,6 +28,7 @@ const Profile = () => {
     bio: "Passionate traveler and storyteller. Always seeking hidden gems and authentic experiences around the world.",
     location: "San Francisco, CA",
     joinDate: "March 2023",
+    isFounder: true, // Add founder status
     stats: {
       published: 8,
       liked: 42,
@@ -126,7 +127,17 @@ const Profile = () => {
               
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-                  <h1 className="font-serif text-3xl font-bold text-wandora-charcoal">{userData.name}</h1>
+                  <div className="flex flex-col md:flex-row md:items-center gap-3">
+                    <h1 className="font-serif text-3xl font-bold text-wandora-charcoal">{userData.name}</h1>
+                    {userData.isFounder && (
+                      <Badge 
+                        className="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 font-semibold px-3 py-1 text-sm shadow-md hover:shadow-lg transition-shadow"
+                      >
+                        <Crown className="w-4 h-4 mr-1" />
+                        Founder
+                      </Badge>
+                    )}
+                  </div>
                   <Sheet open={isEditProfileOpen} onOpenChange={setIsEditProfileOpen}>
                     <SheetTrigger asChild>
                       <Button 
