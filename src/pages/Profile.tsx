@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Heart, BookmarkIcon, PenTool, MapPin, Calendar, Users, Edit2, Crown, User, Star } from "lucide-react";
+import { Heart, BookmarkIcon, PenTool, MapPin, Calendar, Users, Edit2, Crown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import GemstoneCard from "@/components/GemstoneCard";
 import GemstoneDetailModal from "@/components/GemstoneDetailModal";
@@ -132,10 +131,7 @@ const Profile = () => {
                 <div className="flex-1 text-center md:text-left">
                   <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                     <div className="flex flex-col md:flex-row md:items-center gap-3">
-                      <h1 className="font-serif text-4xl font-bold text-gray-900 flex items-center gap-3">
-                        <User className="w-8 h-8 text-wandora-primary" />
-                        {userData.name}
-                      </h1>
+                      <h1 className="font-serif text-4xl font-bold text-gray-900">{userData.name}</h1>
                       {userData.isFounder && (
                         <Badge 
                           className="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 font-semibold px-3 py-1 text-sm shadow-md hover:shadow-lg transition-shadow"
@@ -230,8 +226,7 @@ const Profile = () => {
 
             <TabsContent value="published" className="space-y-8">
               <div className="text-center mb-12">
-                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-                  <PenTool className="w-8 h-8 text-wandora-primary" />
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
                   Your Published Gemstones
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -277,8 +272,7 @@ const Profile = () => {
 
             <TabsContent value="liked" className="space-y-8">
               <div className="text-center mb-12">
-                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-                  <Heart className="w-8 h-8 text-wandora-primary" />
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
                   Your Liked Gemstones
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -321,8 +315,7 @@ const Profile = () => {
 
             <TabsContent value="saved" className="space-y-8">
               <div className="text-center mb-12">
-                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-                  <BookmarkIcon className="w-8 h-8 text-wandora-primary" />
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
                   Your Saved Gemstones
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
