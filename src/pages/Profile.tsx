@@ -99,6 +99,10 @@ const Profile = () => {
     setIsAuthorModalOpen(true);
   };
 
+  const handleEditProfile = () => {
+    window.open('/profile/edit', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-wandora-cream">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -114,7 +118,12 @@ const Profile = () => {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                   <h1 className="font-serif text-3xl font-bold text-wandora-charcoal">{userData.name}</h1>
-                  <Button variant="outline" size="sm" className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"
+                    onClick={handleEditProfile}
+                  >
                     <Edit2 className="w-4 h-4 mr-2" />
                     Edit Profile
                   </Button>
