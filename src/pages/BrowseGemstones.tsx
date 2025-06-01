@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -72,6 +71,89 @@ const BrowseGemstones = () => {
       image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?w=800&h=600&fit=crop",
       excerpt: "Navigating the colorful chaos of Thailand's most authentic floating market. Away from tourist crowds, vendors sell fresh fruits and handmade goods from their wooden boats.",
       likes: 112
+    },
+    {
+      id: 7,
+      title: "Northern Lights in Lapland",
+      author: "Astrid Lindqvist",
+      location: "Rovaniemi, Finland",
+      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=600&fit=crop",
+      excerpt: "Chasing the aurora borealis through the Arctic wilderness. Standing in -30°C temperatures, watching the sky dance in emerald greens and cosmic purples was absolutely magical.",
+      likes: 198
+    },
+    {
+      id: 8,
+      title: "Ancient Temples of Bagan",
+      author: "Min Thu",
+      location: "Bagan, Myanmar",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "Hot air ballooning over 2,000 temples at sunrise. The ancient city spread below like a forgotten dream, with golden pagodas emerging from morning mist.",
+      sponsored: true,
+      likes: 167
+    },
+    {
+      id: 9,
+      title: "Coffee Plantations of Colombia",
+      author: "Sofia Guerrero",
+      location: "Salento, Colombia",
+      image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=600&fit=crop",
+      excerpt: "Learning the art of coffee making from third-generation farmers. Every bean tells a story of tradition, passion, and the perfect mountain climate.",
+      likes: 143
+    },
+    {
+      id: 10,
+      title: "Himalayan Monastery Trek",
+      author: "Tenzin Norbu",
+      location: "Ladakh, India",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "A three-day journey to reach a monastery perched impossibly high in the mountains. The monks' morning prayers echoing across the valleys was pure transcendence.",
+      likes: 185
+    },
+    {
+      id: 11,
+      title: "Maasai Village Experience",
+      author: "Joseph Kimani",
+      location: "Maasai Mara, Kenya",
+      image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&h=600&fit=crop",
+      excerpt: "Living with the Maasai people for a week, learning their traditions and wisdom. The connection to nature and community here is something the modern world has forgotten.",
+      likes: 134
+    },
+    {
+      id: 12,
+      title: "Underground Cenotes of Yucatan",
+      author: "Maria Gonzalez",
+      location: "Tulum, Mexico",
+      image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop",
+      excerpt: "Diving into crystal-clear underground caves that the Maya considered sacred. Swimming through these limestone cathedrals felt like entering another world.",
+      sponsored: true,
+      likes: 221
+    },
+    {
+      id: 13,
+      title: "Fjords of Norway",
+      author: "Erik Hansen",
+      location: "Geiranger, Norway",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "Kayaking through mirror-like waters surrounded by towering waterfalls. The silence was so complete you could hear your own heartbeat echoing off the cliff walls.",
+      likes: 176
+    },
+    {
+      id: 14,
+      title: "Lavender Fields of Provence",
+      author: "Claire Dubois",
+      location: "Valensole, France",
+      image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=600&fit=crop",
+      excerpt: "Cycling through endless purple fields during peak bloom season. The intoxicating scent and the gentle hum of bees created a sensory experience I'll never forget.",
+      likes: 156
+    },
+    {
+      id: 15,
+      title: "Great Wall Sunrise Hike",
+      author: "Li Wei",
+      location: "Jinshanling, China",
+      image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=600&fit=crop",
+      excerpt: "Hiking a remote section of the Great Wall before dawn to catch the sunrise. Having this ancient wonder almost entirely to ourselves was an indescribable privilege.",
+      likes: 192
     }
   ];
 
