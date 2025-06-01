@@ -120,11 +120,11 @@ const BrowseGemstones = () => {
                 className="pl-10 py-3 text-lg border-wandora-sand focus:border-wandora-terracotta"
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <Button
                 variant={viewMode === "grid" ? "default" : "outline"}
                 onClick={() => setViewMode("grid")}
-                className={viewMode === "grid" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}
+                className={`flex items-center justify-center ${viewMode === "grid" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}`}
               >
                 <Grid3X3 className="w-4 h-4 mr-2" />
                 Grid View
@@ -132,7 +132,7 @@ const BrowseGemstones = () => {
               <Button
                 variant={viewMode === "map" ? "default" : "outline"}
                 onClick={() => setViewMode("map")}
-                className={viewMode === "map" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}
+                className={`flex items-center justify-center ${viewMode === "map" ? "bg-wandora-terracotta hover:bg-wandora-terracotta/90" : "border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"}`}
               >
                 <MapPin className="w-4 h-4 mr-2" />
                 Map View
