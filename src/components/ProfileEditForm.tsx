@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,6 +28,8 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
     avatar: userData.avatar
   });
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   console.log('ProfileEditForm rendered');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,6 +45,22 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
   const handleSaveClick = () => {
     console.log('Save button clicked - calling onSave directly');
     onSave(formData);
+  };
+
+  const handlePhotoClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const imageUrl = event.target?.result as string;
+        setFormData(prev => ({ ...prev, avatar: imageUrl }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -63,10 +81,17 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
               {formData.name.split(' ').map(n => n[0]).join('')}
             </AvatarFallback>
           </Avatar>
-          <Button variant="outline" size="sm" type="button">
+          <Button variant="outline" size="sm" type="button" onClick={handlePhotoClick}>
             <Camera className="w-4 h-4 mr-2" />
             Change Photo
           </Button>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handlePhotoChange}
+            className="hidden"
+          />
         </div>
 
         {/* Form Fields */}
