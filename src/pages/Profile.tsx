@@ -28,7 +28,7 @@ const Profile = () => {
     bio: "Passionate traveler and storyteller. Always seeking hidden gems and authentic experiences around the world.",
     location: "San Francisco, CA",
     joinDate: "March 2023",
-    isFounder: true, // Add founder status
+    isFounder: true,
     stats: {
       published: 8,
       liked: 42,
@@ -114,254 +114,274 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-wandora-cream">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Profile Header */}
-        <Card className="mb-8 bg-white shadow-sm">
-          <CardContent className="p-8">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <Avatar className="w-32 h-32">
-                <AvatarImage src={userData.avatar} alt={userData.name} />
-                <AvatarFallback className="text-2xl">{userData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-              </Avatar>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative py-24 bg-gradient-to-br from-slate-50 to-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="bg-white shadow-xl border-0">
+            <CardContent className="p-8">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <Avatar className="w-32 h-32 shadow-lg">
+                  <AvatarImage src={userData.avatar} alt={userData.name} />
+                  <AvatarFallback className="text-2xl bg-gradient-to-br from-wandora-primary to-wandora-secondary text-white">
+                    {userData.name.split(' ').map(n => n[0]).join('')}
+                  </AvatarFallback>
+                </Avatar>
+                
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <div className="flex flex-col md:flex-row md:items-center gap-3">
+                      <h1 className="font-serif text-4xl font-bold text-gray-900">{userData.name}</h1>
+                      {userData.isFounder && (
+                        <Badge 
+                          className="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 font-semibold px-3 py-1 text-sm shadow-md hover:shadow-lg transition-shadow"
+                        >
+                          <Crown className="w-4 h-4 mr-1" />
+                          Founder
+                        </Badge>
+                      )}
+                    </div>
+                    <Sheet open={isEditProfileOpen} onOpenChange={setIsEditProfileOpen}>
+                      <SheetTrigger asChild>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="border-2 border-wandora-primary text-wandora-primary hover:bg-wandora-primary hover:text-white transition-colors"
+                        >
+                          <Edit2 className="w-4 h-4 mr-2" />
+                          Edit Profile
+                        </Button>
+                      </SheetTrigger>
+                      <SheetContent side="right" className="w-[400px] sm:w-[540px]">
+                        <ProfileEditForm
+                          userData={userData}
+                          onSave={handleSaveProfile}
+                          onCancel={() => setIsEditProfileOpen(false)}
+                        />
+                      </SheetContent>
+                    </Sheet>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-6 max-w-2xl text-lg leading-relaxed">{userData.bio}</p>
+                  
+                  <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5" />
+                      <span className="font-medium">{userData.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-5 h-5" />
+                      <span className="font-medium">Joined {userData.joinDate}</span>
+                    </div>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-5 gap-6">
+                    <div className="text-center">
+                      <div className="font-bold text-2xl text-gray-900">{userData.stats.published}</div>
+                      <div className="text-sm text-gray-600 font-medium">Published</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-2xl text-gray-900">{userData.stats.liked}</div>
+                      <div className="text-sm text-gray-600 font-medium">Liked</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-2xl text-gray-900">{userData.stats.saved}</div>
+                      <div className="text-sm text-gray-600 font-medium">Saved</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-2xl text-gray-900">{userData.stats.followers}</div>
+                      <div className="text-sm text-gray-600 font-medium">Followers</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="font-bold text-2xl text-gray-900">{userData.stats.following}</div>
+                      <div className="text-sm text-gray-600 font-medium">Following</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Tabs defaultValue="published" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-12 bg-gray-100 p-2 rounded-lg shadow-sm">
+              <TabsTrigger value="published" className="flex items-center gap-2 text-lg py-3 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                <PenTool className="w-5 h-5" />
+                Published ({userData.stats.published})
+              </TabsTrigger>
+              <TabsTrigger value="liked" className="flex items-center gap-2 text-lg py-3 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                <Heart className="w-5 h-5" />
+                Liked ({userData.stats.liked})
+              </TabsTrigger>
+              <TabsTrigger value="saved" className="flex items-center gap-2 text-lg py-3 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                <BookmarkIcon className="w-5 h-5" />
+                Saved ({userData.stats.saved})
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="published" className="space-y-8">
+              <div className="text-center mb-12">
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
+                  Your Published Gemstones
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Stories you've shared with the Wandora community
+                </p>
+              </div>
               
-              <div className="flex-1 text-center md:text-left">
-                <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
-                  <div className="flex flex-col md:flex-row md:items-center gap-3">
-                    <h1 className="font-serif text-3xl font-bold text-wandora-charcoal">{userData.name}</h1>
-                    {userData.isFounder && (
-                      <Badge 
-                        className="bg-gradient-to-r from-amber-400 to-yellow-500 text-amber-900 font-semibold px-3 py-1 text-sm shadow-md hover:shadow-lg transition-shadow"
-                      >
-                        <Crown className="w-4 h-4 mr-1" />
-                        Founder
-                      </Badge>
-                    )}
-                  </div>
-                  <Sheet open={isEditProfileOpen} onOpenChange={setIsEditProfileOpen}>
-                    <SheetTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="border-wandora-terracotta text-wandora-terracotta hover:bg-wandora-terracotta hover:text-white"
-                      >
-                        <Edit2 className="w-4 h-4 mr-2" />
-                        Edit Profile
-                      </Button>
-                    </SheetTrigger>
-                    <SheetContent side="right" className="w-[400px] sm:w-[540px]">
-                      <ProfileEditForm
-                        userData={userData}
-                        onSave={handleSaveProfile}
-                        onCancel={() => setIsEditProfileOpen(false)}
+              {publishedGemstones.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {publishedGemstones.map((gemstone, index) => (
+                    <div 
+                      key={gemstone.id} 
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <GemstoneCard 
+                        {...gemstone} 
+                        onCardClick={() => handleGemstoneClick(gemstone)}
+                        onAuthorClick={() => handleAuthorClick(gemstone.author)}
                       />
-                    </SheetContent>
-                  </Sheet>
+                    </div>
+                  ))}
                 </div>
-                
-                <p className="text-wandora-stone mb-4 max-w-2xl">{userData.bio}</p>
-                
-                <div className="flex flex-wrap items-center gap-4 text-sm text-wandora-stone mb-6">
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    {userData.location}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    Joined {userData.joinDate}
-                  </div>
-                </div>
+              ) : (
+                <Card className="bg-gray-50 border-0 shadow-lg">
+                  <CardContent className="text-center py-16">
+                    <div className="w-20 h-20 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <PenTool className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
+                      No published gemstones yet
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                      Share your first travel story with the community
+                    </p>
+                    <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-8 py-3 text-lg">
+                      Create Your First Gemstone
+                    </Button>
+                  </CardContent>
+                </Card>
+              )}
+            </TabsContent>
 
-                {/* Stats */}
-                <div className="flex flex-wrap gap-6">
-                  <div className="text-center">
-                    <div className="font-semibold text-xl text-wandora-charcoal">{userData.stats.published}</div>
-                    <div className="text-sm text-wandora-stone">Published</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold text-xl text-wandora-charcoal">{userData.stats.liked}</div>
-                    <div className="text-sm text-wandora-stone">Liked</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold text-xl text-wandora-charcoal">{userData.stats.saved}</div>
-                    <div className="text-sm text-wandora-stone">Saved</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold text-xl text-wandora-charcoal">{userData.stats.followers}</div>
-                    <div className="text-sm text-wandora-stone">Followers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold text-xl text-wandora-charcoal">{userData.stats.following}</div>
-                    <div className="text-sm text-wandora-stone">Following</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Profile Tabs */}
-        <Tabs defaultValue="published" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 bg-white">
-            <TabsTrigger value="published" className="flex items-center gap-2">
-              <PenTool className="w-4 h-4" />
-              Published ({userData.stats.published})
-            </TabsTrigger>
-            <TabsTrigger value="liked" className="flex items-center gap-2">
-              <Heart className="w-4 h-4" />
-              Liked ({userData.stats.liked})
-            </TabsTrigger>
-            <TabsTrigger value="saved" className="flex items-center gap-2">
-              <BookmarkIcon className="w-4 h-4" />
-              Saved ({userData.stats.saved})
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="published" className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-2">
-                Your Published Gemstones
-              </h2>
-              <p className="text-wandora-stone">
-                Stories you've shared with the Wandora community
-              </p>
-            </div>
-            
-            {publishedGemstones.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {publishedGemstones.map((gemstone, index) => (
-                  <div 
-                    key={gemstone.id} 
-                    className="animate-fade-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <GemstoneCard 
-                      {...gemstone} 
-                      onCardClick={() => handleGemstoneClick(gemstone)}
-                      onAuthorClick={() => handleAuthorClick(gemstone.author)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <PenTool className="w-16 h-16 text-wandora-stone mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2">
-                  No published gemstones yet
-                </h3>
-                <p className="text-wandora-stone mb-6">
-                  Share your first travel story with the community
-                </p>
-                <Button className="bg-wandora-terracotta hover:bg-wandora-terracotta/90">
-                  Create Your First Gemstone
-                </Button>
-              </div>
-            )}
-          </TabsContent>
-
-          <TabsContent value="liked" className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-2">
-                Your Liked Gemstones
-              </h2>
-              <p className="text-wandora-stone">
-                Stories that inspired and moved you
-              </p>
-            </div>
-            
-            {likedGemstones.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {likedGemstones.map((gemstone, index) => (
-                  <div 
-                    key={gemstone.id} 
-                    className="animate-fade-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <GemstoneCard 
-                      {...gemstone} 
-                      onCardClick={() => handleGemstoneClick(gemstone)}
-                      onAuthorClick={() => handleAuthorClick(gemstone.author)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <Heart className="w-16 h-16 text-wandora-stone mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2">
-                  No liked gemstones yet
-                </h3>
-                <p className="text-wandora-stone">
-                  Start exploring and like stories that resonate with you
+            <TabsContent value="liked" className="space-y-8">
+              <div className="text-center mb-12">
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
+                  Your Liked Gemstones
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Stories that inspired and moved you
                 </p>
               </div>
-            )}
-          </TabsContent>
+              
+              {likedGemstones.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {likedGemstones.map((gemstone, index) => (
+                    <div 
+                      key={gemstone.id} 
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <GemstoneCard 
+                        {...gemstone} 
+                        onCardClick={() => handleGemstoneClick(gemstone)}
+                        onAuthorClick={() => handleAuthorClick(gemstone.author)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <Card className="bg-gray-50 border-0 shadow-lg">
+                  <CardContent className="text-center py-16">
+                    <div className="w-20 h-20 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Heart className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
+                      No liked gemstones yet
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                      Start exploring and like stories that resonate with you
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </TabsContent>
 
-          <TabsContent value="saved" className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="font-serif text-2xl font-semibold text-wandora-charcoal mb-2">
-                Your Saved Gemstones
-              </h2>
-              <p className="text-wandora-stone">
-                Stories you want to revisit and remember
-              </p>
-            </div>
-            
-            {savedGemstones.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {savedGemstones.map((gemstone, index) => (
-                  <div 
-                    key={gemstone.id} 
-                    className="animate-fade-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <GemstoneCard 
-                      {...gemstone} 
-                      onCardClick={() => handleGemstoneClick(gemstone)}
-                      onAuthorClick={() => handleAuthorClick(gemstone.author)}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <BookmarkIcon className="w-16 h-16 text-wandora-stone mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-semibold text-wandora-charcoal mb-2">
-                  No saved gemstones yet
-                </h3>
-                <p className="text-wandora-stone">
-                  Save stories you want to read again or use for inspiration
+            <TabsContent value="saved" className="space-y-8">
+              <div className="text-center mb-12">
+                <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">
+                  Your Saved Gemstones
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  Stories you want to revisit and remember
                 </p>
               </div>
-            )}
-          </TabsContent>
-        </Tabs>
+              
+              {savedGemstones.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {savedGemstones.map((gemstone, index) => (
+                    <div 
+                      key={gemstone.id} 
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <GemstoneCard 
+                        {...gemstone} 
+                        onCardClick={() => handleGemstoneClick(gemstone)}
+                        onAuthorClick={() => handleAuthorClick(gemstone.author)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <Card className="bg-gray-50 border-0 shadow-lg">
+                  <CardContent className="text-center py-16">
+                    <div className="w-20 h-20 bg-gradient-to-br from-wandora-primary to-wandora-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                      <BookmarkIcon className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
+                      No saved gemstones yet
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                      Save stories you want to read again or use for inspiration
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
 
-        {/* Modals */}
-        {selectedGemstone && isGemstoneModalOpen && (
-          <GemstoneDetailModal
-            isOpen={isGemstoneModalOpen}
-            onClose={() => {
-              setIsGemstoneModalOpen(false);
-              setSelectedGemstone(null);
-            }}
-            onAuthorClick={handleAuthorClick}
-            gemstone={selectedGemstone}
-          />
-        )}
-        
-        {selectedAuthor && isAuthorModalOpen && (
-          <AuthorProfileModal
-            isOpen={isAuthorModalOpen}
-            onClose={() => {
-              setIsAuthorModalOpen(false);
-              setSelectedAuthor("");
-            }}
-            authorName={selectedAuthor}
-          />
-        )}
-      </div>
+      {/* Modals */}
+      {selectedGemstone && isGemstoneModalOpen && (
+        <GemstoneDetailModal
+          isOpen={isGemstoneModalOpen}
+          onClose={() => {
+            setIsGemstoneModalOpen(false);
+            setSelectedGemstone(null);
+          }}
+          onAuthorClick={handleAuthorClick}
+          gemstone={selectedGemstone}
+        />
+      )}
+      
+      {selectedAuthor && isAuthorModalOpen && (
+        <AuthorProfileModal
+          isOpen={isAuthorModalOpen}
+          onClose={() => {
+            setIsAuthorModalOpen(false);
+            setSelectedAuthor("");
+          }}
+          authorName={selectedAuthor}
+        />
+      )}
     </div>
   );
 };
