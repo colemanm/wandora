@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
@@ -43,8 +42,8 @@ const GemstoneCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         {sponsored && (
-          <div className="absolute top-2 right-2 z-10">
-            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 transform rotate-12 shadow-lg">
+          <div className="absolute top-0 left-0 right-0 z-10">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold text-center py-1 shadow-sm">
               SPONSORED
             </div>
           </div>
@@ -77,4 +76,3 @@ const GemstoneCard = ({
 };
 
 export default GemstoneCard;
-
