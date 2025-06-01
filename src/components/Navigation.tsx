@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, User } from "lucide-react";
+import { Menu, User, Home, Gem, Info, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -27,18 +27,20 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
+              <Home className="w-4 h-4" />
               Home
             </Link>
             <Link
               to="/browse"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/browse") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
+              <Gem className="w-4 h-4" />
               Browse Gemstones
             </Link>
             <Link
@@ -52,18 +54,20 @@ const Navigation = () => {
             </Link>
             <Link
               to="/about"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/about") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
+              <Info className="w-4 h-4" />
               About
             </Link>
             <Link
               to="/contact"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary ${
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/contact") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
+              <Phone className="w-4 h-4" />
               Contact
             </Link>
             <Link to="/share">
@@ -92,20 +96,22 @@ const Navigation = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 to="/"
-                className={`block px-3 py-2 text-sm font-medium transition-colors ${
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
+                <Home className="w-4 h-4" />
                 Home
               </Link>
               <Link
                 to="/browse"
-                className={`block px-3 py-2 text-sm font-medium transition-colors ${
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/browse") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
+                <Gem className="w-4 h-4" />
                 Browse Gemstones
               </Link>
               <Link
@@ -120,20 +126,22 @@ const Navigation = () => {
               </Link>
               <Link
                 to="/about"
-                className={`block px-3 py-2 text-sm font-medium transition-colors ${
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/about") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
+                <Info className="w-4 h-4" />
                 About
               </Link>
               <Link
                 to="/contact"
-                className={`block px-3 py-2 text-sm font-medium transition-colors ${
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/contact") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
+                <Phone className="w-4 h-4" />
                 Contact
               </Link>
               <Link
