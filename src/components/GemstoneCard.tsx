@@ -42,8 +42,8 @@ const GemstoneCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         {sponsored && (
-          <div className="absolute top-0 left-0 right-0 z-10">
-            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold text-center py-1 shadow-sm">
+          <div className="absolute top-0 right-0 z-10 overflow-hidden">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold px-8 py-2 transform rotate-45 translate-x-6 -translate-y-2 shadow-lg">
               SPONSORED
             </div>
           </div>
