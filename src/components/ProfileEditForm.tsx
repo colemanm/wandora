@@ -28,9 +28,11 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
     avatar: userData.avatar
   });
 
+  console.log('ProfileEditForm rendered');
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Saving profile data:', formData);
+    console.log('Form submitted with data:', formData);
     onSave(formData);
   };
 
@@ -39,12 +41,12 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
   };
 
   const handleSaveClick = () => {
-    console.log('Save button clicked');
-    handleSubmit(new Event('submit') as any);
+    console.log('Save button clicked - calling onSave directly');
+    onSave(formData);
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-wandora-charcoal">Edit Profile</h2>
         <Button variant="ghost" size="sm" onClick={onCancel}>
@@ -112,21 +114,23 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-3 pt-4">
+        {/* Action Buttons - This should be visible */}
+        <div className="flex gap-3 pt-6 border-t">
           <Button 
             type="button"
             onClick={handleSaveClick}
-            className="flex-1 bg-wandora-terracotta hover:bg-wandora-terracotta/90"
+            className="flex-1 bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white"
+            size="lg"
           >
             <Save className="w-4 h-4 mr-2" />
-            Save
+            Save Changes
           </Button>
           <Button 
             type="button" 
             variant="outline" 
             onClick={onCancel}
             className="flex-1"
+            size="lg"
           >
             Cancel
           </Button>
