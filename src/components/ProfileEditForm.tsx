@@ -30,11 +30,17 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Saving profile data:', formData);
     onSave(formData);
   };
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSaveClick = () => {
+    console.log('Save button clicked');
+    handleSubmit(new Event('submit') as any);
   };
 
   return (
@@ -109,11 +115,12 @@ const ProfileEditForm = ({ userData, onSave, onCancel }: ProfileEditFormProps) =
         {/* Action Buttons */}
         <div className="flex gap-3 pt-4">
           <Button 
-            type="submit"
+            type="button"
+            onClick={handleSaveClick}
             className="flex-1 bg-wandora-terracotta hover:bg-wandora-terracotta/90"
           >
             <Save className="w-4 h-4 mr-2" />
-            Save Changes
+            Save
           </Button>
           <Button 
             type="button" 
