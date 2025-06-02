@@ -253,7 +253,7 @@ const BrowseGemstones = () => {
       title: "Rio's Favela Street Art Workshop",
       author: "Bruno Santos",
       location: "Rio de Janeiro, Brazil",
-      image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?w=800&h=600&fit=crop",
       excerpt: "Creating murals with local artists in Rio's hillside communities. These workshops showcase how street art transforms neighborhoods and builds cultural bridges.",
       likes: 187
     },
@@ -266,6 +266,117 @@ const BrowseGemstones = () => {
       excerpt: "Exploring Moscow's palatial underground stations with art historians. Each metro stop is a museum showcasing Soviet-era mosaics, sculptures, and chandeliers.",
       sponsored: true,
       likes: 165
+    },
+    {
+      id: 28,
+      title: "Istanbul's Underground Cistern Concert",
+      author: "Elif Demir",
+      location: "Istanbul, Turkey",
+      image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=600&fit=crop",
+      excerpt: "Attending a classical music concert in the 6th-century Basilica Cistern. The acoustics of this ancient underground chamber create an otherworldly musical experience.",
+      likes: 156
+    },
+    {
+      id: 29,
+      title: "Kyoto Temple Meditation Retreat",
+      author: "Hiroshi Yamamoto",
+      location: "Kyoto, Japan",
+      image: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=600&fit=crop",
+      excerpt: "Three days of silent meditation with Buddhist monks in a 1,200-year-old temple. The pre-dawn ceremonies and mindful tea preparation taught me about inner peace.",
+      sponsored: true,
+      likes: 198
+    },
+    {
+      id: 30,
+      title: "Vegas Underground Tunnel Art Tour",
+      author: "Sarah Mitchell",
+      location: "Las Vegas, USA",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "Discovering hidden murals in the flood tunnels beneath the Strip. These underground galleries showcase the raw creativity of Vegas' alternative art scene.",
+      likes: 143
+    },
+    {
+      id: 31,
+      title: "Edinburgh Underground Ghost Tours",
+      author: "Fiona MacLeod",
+      location: "Edinburgh, Scotland",
+      image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&h=600&fit=crop",
+      excerpt: "Exploring the Real Mary King's Close and other buried streets beneath the Royal Mile. These 16th-century underground chambers tell haunting tales of medieval life.",
+      likes: 167
+    },
+    {
+      id: 32,
+      title: "Marrakech Rooftop Yoga at Sunrise",
+      author: "Yasmin Benjelloun",
+      location: "Marrakech, Morocco",
+      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
+      excerpt: "Practicing yoga on traditional riads' rooftops as the medina awakens below. The call to prayer mingles with morning stretches in this magical experience.",
+      likes: 189
+    },
+    {
+      id: 33,
+      title: "Stockholm Archipelago Ice Swimming",
+      author: "Astrid Eriksson",
+      location: "Stockholm, Sweden",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      excerpt: "Joining locals for winter ice swimming followed by sauna sessions. This centuries-old Nordic tradition connects you deeply with nature's harsh beauty.",
+      sponsored: true,
+      likes: 134
+    },
+    {
+      id: 34,
+      title: "Cape Town Wine Cave Tastings",
+      author: "Thabo Mthembu",
+      location: "Cape Town, South Africa",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "Descending into 18th-century wine cellars carved into Table Mountain's granite. These underground tastings pair exceptional wines with fascinating geological history.",
+      likes: 176
+    },
+    {
+      id: 35,
+      title: "Mumbai Dabbawalas Shadow Experience",
+      author: "Priya Sharma",
+      location: "Mumbai, India",
+      image: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=800&h=600&fit=crop",
+      excerpt: "Following the legendary lunch delivery system through Mumbai's chaotic streets. This 125-year-old network achieves 99.99% accuracy without modern technology.",
+      likes: 203
+    },
+    {
+      id: 36,
+      title: "Bangkok Temple Cat Meditation",
+      author: "Siriporn Chaiyawat",
+      location: "Bangkok, Thailand",
+      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop",
+      excerpt: "Meditating alongside temple cats in ancient Buddhist monasteries. These sacred felines are believed to bring good luck and add unexpected zen to spiritual practice.",
+      likes: 156
+    },
+    {
+      id: 37,
+      title: "Melbourne Lane Graffiti Walking Tour",
+      author: "Jackson Clarke",
+      location: "Melbourne, Australia",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      excerpt: "Exploring Melbourne's famous laneways with the artists who created them. These narrow alleys showcase some of the world's most vibrant and ever-changing street art.",
+      sponsored: true,
+      likes: 189
+    },
+    {
+      id: 38,
+      title: "Vienna Classical Music in Sewers",
+      author: "Klaus Weber",
+      location: "Vienna, Austria",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
+      excerpt: "Attending underground concerts in Vienna's 19th-century sewer system. The acoustics of these vaulted tunnels create a unique venue for classical performances.",
+      likes: 145
+    },
+    {
+      id: 39,
+      title: "Havana Classic Car Mechanic Workshop",
+      author: "Carlos Mendez",
+      location: "Havana, Cuba",
+      image: "https://images.unsplash.com/photo-1571406252791-db278046499f?w=800&h=600&fit=crop",
+      excerpt: "Learning to maintain 1950s American cars with Cuban mechanics. These vintage beauties are kept running through incredible ingenuity and resourcefulness.",
+      likes: 167
     }
   ];
 
