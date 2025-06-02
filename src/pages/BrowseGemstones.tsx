@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,7 @@ const BrowseGemstones = () => {
       title: "Hidden Waterfalls of Iceland",
       author: "Emma Kowalski",
       location: "Reykjavik, Iceland",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
       excerpt: "Discovering a secret waterfall that locals rarely share with tourists. After days of research and conversations with locals, I found myself standing before one of Iceland's most breathtaking hidden gems.",
       sponsored: true,
       likes: 127
@@ -32,7 +31,7 @@ const BrowseGemstones = () => {
       title: "Street Art in Buenos Aires",
       author: "Carlos Rodriguez",
       location: "Buenos Aires, Argentina",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop",
       excerpt: "The hidden murals that tell stories of a neighborhood's transformation. Walking through the winding streets of Palermo, each wall seemed to whisper tales of resilience and creativity.",
       likes: 89
     },
@@ -41,7 +40,7 @@ const BrowseGemstones = () => {
       title: "Sunrise at Mount Fuji",
       author: "Yuki Tanaka",
       location: "Fujinomiya, Japan",
-      image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1578637387939-43c525550085?w=800&h=600&fit=crop",
       excerpt: "The spiritual journey to witness dawn break over Japan's sacred mountain. At 4 AM, surrounded by pilgrims and photographers, I understood why this moment is considered sacred.",
       sponsored: true,
       likes: 203
@@ -51,7 +50,7 @@ const BrowseGemstones = () => {
       title: "Night Markets of Taipei",
       author: "Lisa Chen",
       location: "Taipei, Taiwan",
-      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1559741464-b847b5f2f47d?w=800&h=600&fit=crop",
       excerpt: "Following the scent of xiaolongbao through narrow alleyways. The real magic of Taipei happens after sunset, when the city transforms into a food lover's paradise.",
       likes: 156
     },
@@ -60,7 +59,7 @@ const BrowseGemstones = () => {
       title: "Sahara Desert Camping",
       author: "Ahmed Hassan",
       location: "Merzouga, Morocco",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop",
       excerpt: "Sleeping under a blanket of stars with nothing but sand dunes for miles. The silence of the Sahara is unlike anything I've ever experienced - it's profound and transformative.",
       likes: 74
     },
@@ -69,7 +68,7 @@ const BrowseGemstones = () => {
       title: "Floating Markets of Bangkok",
       author: "Siriporn Wannakul",
       location: "Bangkok, Thailand",
-      image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1552550049-db097c9480d1?w=800&h=600&fit=crop",
       excerpt: "Navigating the colorful chaos of Thailand's most authentic floating market. Away from tourist crowds, vendors sell fresh fruits and handmade goods from their wooden boats.",
       likes: 112
     },
@@ -78,7 +77,7 @@ const BrowseGemstones = () => {
       title: "Northern Lights in Lapland",
       author: "Astrid Lindqvist",
       location: "Rovaniemi, Finland",
-      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=800&h=600&fit=crop",
       excerpt: "Chasing the aurora borealis through the Arctic wilderness. Standing in -30°C temperatures, watching the sky dance in emerald greens and cosmic purples was absolutely magical.",
       likes: 198
     },
@@ -87,7 +86,7 @@ const BrowseGemstones = () => {
       title: "Ancient Temples of Bagan",
       author: "Min Thu",
       location: "Bagan, Myanmar",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1578661768012-25ac6b28aaea?w=800&h=600&fit=crop",
       excerpt: "Hot air ballooning over 2,000 temples at sunrise. The ancient city spread below like a forgotten dream, with golden pagodas emerging from morning mist.",
       sponsored: true,
       likes: 167
@@ -106,7 +105,7 @@ const BrowseGemstones = () => {
       title: "Himalayan Monastery Trek",
       author: "Tenzin Norbu",
       location: "Ladakh, India",
-      image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&h=600&fit=crop",
       excerpt: "A three-day journey to reach a monastery perched impossibly high in the mountains. The monks' morning prayers echoing across the valleys was pure transcendence.",
       likes: 185
     },
@@ -124,7 +123,7 @@ const BrowseGemstones = () => {
       title: "Underground Cenotes of Yucatan",
       author: "Maria Gonzalez",
       location: "Tulum, Mexico",
-      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1544551763-77fea132b230?w=800&h=600&fit=crop",
       excerpt: "Diving into crystal-clear underground caves that the Maya considered sacred. Swimming through these limestone cathedrals felt like entering another world.",
       sponsored: true,
       likes: 221
@@ -134,7 +133,7 @@ const BrowseGemstones = () => {
       title: "Fjords of Norway",
       author: "Erik Hansen",
       location: "Geiranger, Norway",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
       excerpt: "Kayaking through mirror-like waters surrounded by towering waterfalls. The silence was so complete you could hear your own heartbeat echoing off the cliff walls.",
       likes: 176
     },
@@ -394,7 +393,7 @@ const BrowseGemstones = () => {
       title: "Parisian Rooftop Beekeeping",
       author: "Margot Leroy",
       location: "Paris, France",
-      image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop",
       excerpt: "Learning urban beekeeping on the rooftops of Montmartre. High above the bustling streets, beekeepers tend to hives that produce some of the city's finest honey.",
       sponsored: true,
       likes: 178
@@ -432,7 +431,7 @@ const BrowseGemstones = () => {
       title: "Barcelona's Secret Modernist Buildings",
       author: "Carmen Vidal",
       location: "Barcelona, Spain",
-      image: "https://images.unsplash.com/photo-1562441969-c00c5ac5f79a?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop",
       excerpt: "Beyond Gaudí lies a treasure trove of hidden modernist architecture. Private courtyards and lesser-known buildings reveal the movement's true diversity.",
       likes: 156
     },
