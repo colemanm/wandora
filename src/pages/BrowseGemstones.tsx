@@ -154,6 +154,118 @@ const BrowseGemstones = () => {
       image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=600&fit=crop",
       excerpt: "Hiking a remote section of the Great Wall before dawn to catch the sunrise. Having this ancient wonder almost entirely to ourselves was an indescribable privilege.",
       likes: 192
+    },
+    {
+      id: 16,
+      title: "Underground London Book Tunnels",
+      author: "Oliver Winchester",
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
+      excerpt: "Exploring the secret network of tunnels beneath famous London bookshops. These hidden literary passages connect independent stores and host clandestine poetry readings.",
+      likes: 145
+    },
+    {
+      id: 17,
+      title: "Parisian Rooftop Beekeeping",
+      author: "Margot Leroy",
+      location: "Paris, France",
+      image: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop",
+      excerpt: "Learning urban beekeeping on the rooftops of Montmartre. High above the bustling streets, beekeepers tend to hives that produce some of the city's finest honey.",
+      sponsored: true,
+      likes: 178
+    },
+    {
+      id: 18,
+      title: "NYC Abandoned Subway Exploration",
+      author: "Marcus Rodriguez",
+      location: "New York City, USA",
+      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop",
+      excerpt: "Guided tours through forgotten subway stations and abandoned train tracks. Beneath the city that never sleeps lies a fascinating world frozen in time.",
+      likes: 203
+    },
+    {
+      id: 19,
+      title: "Tokyo Manhole Cover Art Hunt",
+      author: "Kenji Matsumoto",
+      location: "Tokyo, Japan",
+      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop",
+      excerpt: "Discovering the intricate art hidden beneath Tokyo's streets. Each ward has unique manhole covers featuring local landmarks, flowers, and cultural symbols.",
+      likes: 167
+    },
+    {
+      id: 20,
+      title: "Roman Catacombs Photography",
+      author: "Giuseppe Fontana",
+      location: "Rome, Italy",
+      image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop",
+      excerpt: "Capturing the haunting beauty of Rome's underground burial chambers. These ancient catacombs tell stories of early Christianity through carved symbols and frescoes.",
+      sponsored: true,
+      likes: 189
+    },
+    {
+      id: 21,
+      title: "Barcelona's Secret Modernist Buildings",
+      author: "Carmen Vidal",
+      location: "Barcelona, Spain",
+      image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop",
+      excerpt: "Beyond Gaudí lies a treasure trove of hidden modernist architecture. Private courtyards and lesser-known buildings reveal the movement's true diversity.",
+      likes: 156
+    },
+    {
+      id: 22,
+      title: "Amsterdam Canal House Concerts",
+      author: "Pieter Van Der Berg",
+      location: "Amsterdam, Netherlands",
+      image: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&h=600&fit=crop",
+      excerpt: "Intimate classical concerts in historic canal house living rooms. Local musicians open their 17th-century homes for magical evening performances.",
+      likes: 134
+    },
+    {
+      id: 23,
+      title: "Dubai Desert Falconry Experience",
+      author: "Fatima Al-Rashid",
+      location: "Dubai, UAE",
+      image: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=800&h=600&fit=crop",
+      excerpt: "Learning the ancient art of falconry in the Arabian desert. Working with Bedouin trainers and their magnificent birds connects you to centuries of tradition.",
+      sponsored: true,
+      likes: 198
+    },
+    {
+      id: 24,
+      title: "Singapore Urban Foraging Tour",
+      author: "Wei Lin Tan",
+      location: "Singapore",
+      image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=600&fit=crop",
+      excerpt: "Discovering edible plants in Singapore's urban landscape. Expert guides reveal how to find wild herbs and fruits growing in the city's green spaces.",
+      likes: 142
+    },
+    {
+      id: 25,
+      title: "Sydney Harbour Bridge Climbing",
+      author: "Jack Morrison",
+      location: "Sydney, Australia",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      excerpt: "Scaling the iconic Harbour Bridge at dawn for sunrise views. The guided climb offers unparalleled perspectives of the Opera House and sparkling harbour below.",
+      likes: 223
+    },
+    {
+      id: 26,
+      title: "Rio's Favela Street Art Workshop",
+      author: "Bruno Santos",
+      location: "Rio de Janeiro, Brazil",
+      image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&h=600&fit=crop",
+      excerpt: "Creating murals with local artists in Rio's hillside communities. These workshops showcase how street art transforms neighborhoods and builds cultural bridges.",
+      likes: 187
+    },
+    {
+      id: 27,
+      title: "Moscow Metro Architecture Tours",
+      author: "Anastasia Volkov",
+      location: "Moscow, Russia",
+      image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&h=600&fit=crop",
+      excerpt: "Exploring Moscow's palatial underground stations with art historians. Each metro stop is a museum showcasing Soviet-era mosaics, sculptures, and chandeliers.",
+      sponsored: true,
+      likes: 165
     }
   ];
 
