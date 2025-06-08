@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, User, Home, Gem, Info, Phone } from "lucide-react";
+import { Menu, User, Home, Gem, Info, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -69,6 +69,15 @@ const Navigation = () => {
             >
               <Phone className="w-4 h-4" />
               Contact
+            </Link>
+            <Link
+              to="/feedback"
+              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
+                isActive("/feedback") ? "text-wandora-primary" : "text-wandora-dark"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              Feedback
             </Link>
             <Link to="/share">
               <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
@@ -143,6 +152,16 @@ const Navigation = () => {
               >
                 <Phone className="w-4 h-4" />
                 Contact
+              </Link>
+              <Link
+                to="/feedback"
+                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                  isActive("/feedback") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <MessageSquare className="w-4 h-4" />
+                Feedback
               </Link>
               <Link
                 to="/share"
