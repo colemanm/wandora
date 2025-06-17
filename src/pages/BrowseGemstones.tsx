@@ -92,7 +92,6 @@ const BrowseGemstones = () => {
             setSelectedGemstone(null);
           }}
           onAuthorClick={handleAuthorClick}
-          onGemstoneClick={handleGemstoneClick}
           gemstone={selectedGemstone}
         />
       )}
