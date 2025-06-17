@@ -51,7 +51,7 @@ This place will forever hold a special place in my heart, and I hope it remains 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-none w-screen h-screen max-h-screen p-0 overflow-hidden bg-white border-none">
+      <DialogContent className="fixed inset-0 z-50 w-screen h-screen max-w-none max-h-none p-0 m-0 bg-white border-none overflow-hidden">
         {/* Full screen layout similar to Amazon */}
         <div className="flex flex-col h-full relative">
           {/* Close button - positioned absolutely */}
@@ -65,7 +65,7 @@ This place will forever hold a special place in my heart, and I hope it remains 
           </Button>
 
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-40">
+          <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-40 flex-shrink-0">
             <DialogTitle className="text-2xl font-serif text-wandora-charcoal pr-16">
               {gemstone.title}
             </DialogTitle>
