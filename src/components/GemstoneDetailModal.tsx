@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Heart, MapPin, User, Share, Bookmark } from "lucide-react";
+import { Heart, MapPin, User, Share, Bookmark, Star, Calendar, Eye } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface GemstoneDetailModalProps {
@@ -44,86 +44,167 @@ This place will forever hold a special place in my heart, and I hope it remains 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-serif text-wandora-charcoal">
-            {gemstone.title}
-          </DialogTitle>
-        </DialogHeader>
-        
-        <div className="space-y-6">
-          {/* Photo Carousel */}
-          <div className="relative">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {additionalPhotos.map((photo, index) => (
-                  <CarouselItem key={index}>
-                    <div className="relative h-96 rounded-lg overflow-hidden">
+      <DialogContent className="max-w-none w-screen h-screen max-h-screen p-0 overflow-hidden bg-white">
+        {/* Full screen layout similar to Amazon */}
+        <div className="flex flex-col h-full">
+          {/* Header with close button */}
+          <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-10">
+            <DialogTitle className="text-2xl font-serif text-wandora-charcoal">
+              {gemstone.title}
+            </DialogTitle>
+          </div>
+
+          {/* Main content area */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="grid lg:grid-cols-2 gap-8 p-6 max-w-7xl mx-auto">
+              {/* Left side - Images */}
+              <div className="space-y-4">
+                <div className="relative">
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {additionalPhotos.map((photo, index) => (
+                        <CarouselItem key={index}>
+                          <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden">
+                            <img 
+                              src={photo} 
+                              alt={`${gemstone.title} - Photo ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
+                  </Carousel>
+                  
+                  {gemstone.sponsored && (
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold py-2 px-4 rounded-full">
+                      ✨ Sponsored Gemstone
+                    </div>
+                  )}
+                </div>
+
+                {/* Thumbnail strip */}
+                <div className="flex space-x-2 overflow-x-auto">
+                  {additionalPhotos.map((photo, index) => (
+                    <div key={index} className="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 border-gray-200">
                       <img 
                         src={photo} 
-                        alt={`${gemstone.title} - Photo ${index + 1}`}
+                        alt={`Thumbnail ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-            
-            {gemstone.sponsored && (
-              <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-semibold py-1 px-3 rounded">
-                ✨ Sponsored
+                  ))}
+                </div>
               </div>
-            )}
-          </div>
 
-          {/* Author and Location Info */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <button 
-                onClick={() => onAuthorClick(gemstone.author)}
-                className="flex items-center space-x-2 hover:text-wandora-terracotta transition-colors"
-              >
-                <User className="w-5 h-5" />
-                <span className="font-medium">{gemstone.author}</span>
-              </button>
-              <div className="flex items-center space-x-1 text-wandora-stone">
-                <MapPin className="w-4 h-4" />
-                <span>{gemstone.location}</span>
+              {/* Right side - Details */}
+              <div className="space-y-6">
+                {/* Author and location info */}
+                <div className="space-y-4">
+                  <button 
+                    onClick={() => onAuthorClick(gemstone.author)}
+                    className="flex items-center space-x-3 hover:text-wandora-terracotta transition-colors group"
+                  >
+                    <div className="w-12 h-12 bg-wandora-terracotta rounded-full flex items-center justify-center">
+                      <User className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-left">
+                      <p className="font-semibold text-lg group-hover:text-wandora-terracotta">{gemstone.author}</p>
+                      <p className="text-wandora-stone text-sm">Travel Storyteller</p>
+                    </div>
+                  </button>
+                  
+                  <div className="flex items-center space-x-2 text-wandora-stone">
+                    <MapPin className="w-5 h-5" />
+                    <span className="text-lg">{gemstone.location}</span>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center space-x-1 text-red-500 mb-1">
+                      <Heart className="w-5 h-5 fill-current" />
+                      <span className="font-bold text-lg">{gemstone.likes}</span>
+                    </div>
+                    <p className="text-sm text-gray-600">Likes</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center space-x-1 text-yellow-500 mb-1">
+                      <Star className="w-5 h-5 fill-current" />
+                      <span className="font-bold text-lg">4.8</span>
+                    </div>
+                    <p className="text-sm text-gray-600">Rating</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center space-x-1 text-blue-500 mb-1">
+                      <Eye className="w-5 h-5" />
+                      <span className="font-bold text-lg">2.3k</span>
+                    </div>
+                    <p className="text-sm text-gray-600">Views</p>
+                  </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex space-x-3">
+                  <Button className="flex-1 bg-wandora-terracotta hover:bg-wandora-terracotta/90 text-white">
+                    <Heart className="w-4 h-4 mr-2" />
+                    Save to Favorites
+                  </Button>
+                  <Button variant="outline" className="flex-1">
+                    <Share className="w-4 h-4 mr-2" />
+                    Share Story
+                  </Button>
+                </div>
+
+                {/* Story preview */}
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-wandora-charcoal">Story Preview</h3>
+                  <p className="text-wandora-stone leading-relaxed">
+                    {gemstone.excerpt}
+                  </p>
+                  <Button variant="outline" className="w-full">
+                    Read Full Story Below
+                  </Button>
+                </div>
+
+                {/* Quick info */}
+                <div className="space-y-3 p-4 border rounded-lg">
+                  <h4 className="font-semibold text-wandora-charcoal">Quick Info</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-wandora-stone">Best time to visit:</span>
+                      <span>Early morning</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-wandora-stone">Difficulty level:</span>
+                      <span>Moderate</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-wandora-stone">Duration:</span>
+                      <span>Half day</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Location badge */}
+                <Badge className="bg-wandora-terracotta text-white text-sm px-4 py-2">
+                  📍 {gemstone.location}
+                </Badge>
               </div>
             </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-1">
-                <Heart className="w-5 h-5 text-red-400 fill-red-400" />
-                <span className="font-medium">{gemstone.likes}</span>
+
+            {/* Full story section */}
+            <div className="border-t bg-gray-50">
+              <div className="max-w-4xl mx-auto p-6">
+                <h3 className="text-2xl font-serif font-bold text-wandora-charcoal mb-6">The Complete Story</h3>
+                <div className="prose max-w-none text-wandora-charcoal/80 leading-relaxed whitespace-pre-line">
+                  {fullStory}
+                </div>
               </div>
-              <Button variant="outline" size="sm">
-                <Bookmark className="w-4 h-4 mr-2" />
-                Save
-              </Button>
-              <Button variant="outline" size="sm">
-                <Share className="w-4 h-4 mr-2" />
-                Share
-              </Button>
             </div>
-          </div>
-
-          {/* Full Story */}
-          <div className="prose max-w-none">
-            <h3 className="text-lg font-semibold text-wandora-charcoal mb-3">The Full Story</h3>
-            <div className="text-wandora-charcoal/80 leading-relaxed whitespace-pre-line">
-              {fullStory}
-            </div>
-          </div>
-
-          {/* Location Badge */}
-          <div className="flex justify-start">
-            <Badge className="bg-wandora-terracotta text-white">
-              {gemstone.location}
-            </Badge>
           </div>
         </div>
       </DialogContent>
