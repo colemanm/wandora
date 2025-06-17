@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Image, User, Map } from "lucide-react";
+import { User, Map } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ImageUpload from "@/components/ImageUpload";
 
 const ShareGemstone = () => {
   const [formData, setFormData] = useState({
@@ -15,12 +16,14 @@ const ShareGemstone = () => {
     email: "",
     story: "",
     tips: "",
-    image: ""
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form data:', formData);
+    console.log('Image file:', imageFile);
     toast({
       title: "Thank you for creating!",
       description: "Your travel gemstone has been created and will be reviewed by our team.",
@@ -32,8 +35,8 @@ const ShareGemstone = () => {
       email: "",
       story: "",
       tips: "",
-      image: ""
     });
+    setImageFile(null);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,6 +44,10 @@ const ShareGemstone = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleImageChange = (file: File | null) => {
+    setImageFile(file);
   };
 
   return (
@@ -134,18 +141,10 @@ const ShareGemstone = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="image" className="block text-sm font-medium text-wandora-charcoal mb-2">
-                      Image URL
+                    <label className="block text-sm font-medium text-wandora-charcoal mb-2">
+                      Photo
                     </label>
-                    <Input
-                      id="image"
-                      name="image"
-                      type="url"
-                      value={formData.image}
-                      onChange={handleChange}
-                      placeholder="https://example.com/your-photo.jpg"
-                      className="border-wandora-sand focus:border-wandora-terracotta"
-                    />
+                    <ImageUpload onImageChange={handleImageChange} />
                     <p className="text-sm text-wandora-stone mt-1">
                       Share a photo that captures the essence of your experience
                     </p>
@@ -217,7 +216,7 @@ const ShareGemstone = () => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Image className="w-5 h-5 text-wandora-terracotta mt-1 flex-shrink-0" />
+                  <Upload className="w-5 h-5 text-wandora-terracotta mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-wandora-charcoal">Visual</h4>
                     <p className="text-sm text-wandora-stone">A compelling photo helps tell your story</p>
