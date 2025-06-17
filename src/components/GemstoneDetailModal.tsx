@@ -1,14 +1,16 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Heart, MapPin, User, Share, Bookmark, Star, Calendar, Eye, X } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { gemstones, Gemstone } from "@/data/GemstoneData";
+import GemstoneCard from "@/components/GemstoneCard";
 
 interface GemstoneDetailModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAuthorClick: (author: string) => void;
+  onGemstoneClick: (gemstone: Gemstone) => void;
   gemstone: {
     id: number;
     title: string;
@@ -21,7 +23,7 @@ interface GemstoneDetailModalProps {
   };
 }
 
-const GemstoneDetailModal = ({ isOpen, onClose, onAuthorClick, gemstone }: GemstoneDetailModalProps) => {
+const GemstoneDetailModal = ({ isOpen, onClose, onAuthorClick, onGemstoneClick, gemstone }: GemstoneDetailModalProps) => {
   // Mock additional photos for carousel
   const additionalPhotos = [
     gemstone.image,
@@ -29,6 +31,14 @@ const GemstoneDetailModal = ({ isOpen, onClose, onAuthorClick, gemstone }: Gemst
     "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop"
   ];
+
+  // Find similar gemstones based on location or author
+  const similarGemstones = gemstones
+    .filter(g => 
+      g.id !== gemstone.id && 
+      (g.location === gemstone.location || g.author === gemstone.author)
+    )
+    .slice(0, 3); // Show up to 3 similar gemstones
 
   const fullStory = `${gemstone.excerpt} 
 
@@ -215,6 +225,28 @@ This place will forever hold a special place in my heart, and I hope it remains 
                 </div>
               </div>
             </div>
+
+            {/* Similar Gemstones section */}
+            {similarGemstones.length > 0 && (
+              <div className="border-t bg-white">
+                <div className="max-w-7xl mx-auto p-6">
+                  <h3 className="text-2xl font-serif font-bold text-wandora-charcoal mb-6">
+                    Similar Gemstones
+                  </h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {similarGemstones.map((similarGemstone) => (
+                      <div key={similarGemstone.id} className="animate-fade-in">
+                        <GemstoneCard
+                          {...similarGemstone}
+                          onCardClick={() => onGemstoneClick(similarGemstone)}
+                          onAuthorClick={() => onAuthorClick(similarGemstone.author)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>
