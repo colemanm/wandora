@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Heart, MapPin, User, Share, Bookmark, Star, Calendar, Eye } from "lucide-react";
+import { Heart, MapPin, User, Share, Bookmark, Star, Calendar, Eye, X } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface GemstoneDetailModalProps {
@@ -44,17 +44,27 @@ This place will forever hold a special place in my heart, and I hope it remains 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-none w-screen h-screen max-h-screen p-0 overflow-hidden bg-white">
+      <DialogContent className="max-w-none w-screen h-screen max-h-screen p-0 overflow-hidden bg-white border-none">
         {/* Full screen layout similar to Amazon */}
-        <div className="flex flex-col h-full">
-          {/* Header with close button */}
-          <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-10">
-            <DialogTitle className="text-2xl font-serif text-wandora-charcoal">
+        <div className="flex flex-col h-full relative">
+          {/* Close button - positioned absolutely */}
+          <Button
+            onClick={onClose}
+            variant="ghost"
+            size="icon"
+            className="absolute top-4 right-4 z-50 bg-white/80 hover:bg-white shadow-md rounded-full w-10 h-10"
+          >
+            <X className="w-5 h-5" />
+          </Button>
+
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-40">
+            <DialogTitle className="text-2xl font-serif text-wandora-charcoal pr-16">
               {gemstone.title}
             </DialogTitle>
           </div>
 
-          {/* Main content area */}
+          {/* Main content area - scrollable */}
           <div className="flex-1 overflow-y-auto">
             <div className="grid lg:grid-cols-2 gap-8 p-6 max-w-7xl mx-auto">
               {/* Left side - Images */}
