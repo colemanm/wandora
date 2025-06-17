@@ -42,6 +42,13 @@ If you're planning to visit, I recommend bringing sturdy hiking boots and plenty
 
 This place will forever hold a special place in my heart, and I hope it remains as pristine and magical for future travelers to discover.`;
 
+  const scrollToFullStory = () => {
+    const fullStoryElement = document.getElementById('full-story-section');
+    if (fullStoryElement) {
+      fullStoryElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-none w-screen h-screen max-h-screen p-0 overflow-hidden bg-white border-none">
@@ -175,7 +182,11 @@ This place will forever hold a special place in my heart, and I hope it remains 
                   <p className="text-wandora-stone leading-relaxed">
                     {gemstone.excerpt}
                   </p>
-                  <Button variant="outline" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={scrollToFullStory}
+                  >
                     Read Full Story Below
                   </Button>
                 </div>
@@ -207,7 +218,7 @@ This place will forever hold a special place in my heart, and I hope it remains 
             </div>
 
             {/* Full story section */}
-            <div className="border-t bg-gray-50">
+            <div id="full-story-section" className="border-t bg-gray-50">
               <div className="max-w-4xl mx-auto p-6">
                 <h3 className="text-2xl font-serif font-bold text-wandora-charcoal mb-6">The Complete Story</h3>
                 <div className="prose max-w-none text-wandora-charcoal/80 leading-relaxed whitespace-pre-line">
