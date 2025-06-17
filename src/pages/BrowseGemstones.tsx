@@ -130,15 +130,6 @@ const BrowseGemstones = () => {
     },
     {
       id: 13,
-      title: "Fjords of Norway",
-      author: "Erik Hansen",
-      location: "Geiranger, Norway",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      excerpt: "Kayaking through mirror-like waters surrounded by towering waterfalls. The silence was so complete you could hear your own heartbeat echoing off the cliff walls.",
-      likes: 176
-    },
-    {
-      id: 14,
       title: "Lavender Fields of Provence",
       author: "Claire Dubois",
       location: "Valensole, France",
@@ -147,7 +138,7 @@ const BrowseGemstones = () => {
       likes: 156
     },
     {
-      id: 15,
+      id: 14,
       title: "Great Wall Sunrise Hike",
       author: "Li Wei",
       location: "Jinshanling, China",
@@ -156,35 +147,7 @@ const BrowseGemstones = () => {
       likes: 192
     },
     {
-      id: 16,
-      title: "Underground London Book Tunnels",
-      author: "Oliver Winchester",
-      location: "London, UK",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
-      excerpt: "Exploring the secret network of tunnels beneath famous London bookshops. These hidden literary passages connect independent stores and host clandestine poetry readings.",
-      likes: 145
-    },
-    {
-      id: 17,
-      title: "Parisian Rooftop Beekeeping",
-      author: "Margot Leroy",
-      location: "Paris, France",
-      image: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop",
-      excerpt: "Learning urban beekeeping on the rooftops of Montmartre. High above the bustling streets, beekeepers tend to hives that produce some of the city's finest honey.",
-      sponsored: true,
-      likes: 178
-    },
-    {
-      id: 18,
-      title: "NYC Abandoned Subway Exploration",
-      author: "Marcus Rodriguez",
-      location: "New York City, USA",
-      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop",
-      excerpt: "Guided tours through forgotten subway stations and abandoned train tracks. Beneath the city that never sleeps lies a fascinating world frozen in time.",
-      likes: 203
-    },
-    {
-      id: 19,
+      id: 15,
       title: "Tokyo Manhole Cover Art Hunt",
       author: "Kenji Matsumoto",
       location: "Tokyo, Japan",
@@ -193,7 +156,7 @@ const BrowseGemstones = () => {
       likes: 167
     },
     {
-      id: 20,
+      id: 16,
       title: "Roman Catacombs Photography",
       author: "Giuseppe Fontana",
       location: "Rome, Italy",
@@ -203,7 +166,7 @@ const BrowseGemstones = () => {
       likes: 189
     },
     {
-      id: 21,
+      id: 17,
       title: "Barcelona's Secret Modernist Buildings",
       author: "Carmen Vidal",
       location: "Barcelona, Spain",
@@ -212,7 +175,7 @@ const BrowseGemstones = () => {
       likes: 156
     },
     {
-      id: 22,
+      id: 18,
       title: "Amsterdam Canal House Concerts",
       author: "Pieter Van Der Berg",
       location: "Amsterdam, Netherlands",
@@ -221,17 +184,7 @@ const BrowseGemstones = () => {
       likes: 134
     },
     {
-      id: 23,
-      title: "Dubai Desert Falconry Experience",
-      author: "Fatima Al-Rashid",
-      location: "Dubai, UAE",
-      image: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=800&h=600&fit=crop",
-      excerpt: "Learning the ancient art of falconry in the Arabian desert. Working with Bedouin trainers and their magnificent birds connects you to centuries of tradition.",
-      sponsored: true,
-      likes: 198
-    },
-    {
-      id: 24,
+      id: 19,
       title: "Singapore Urban Foraging Tour",
       author: "Wei Lin Tan",
       location: "Singapore",
@@ -240,44 +193,7 @@ const BrowseGemstones = () => {
       likes: 142
     },
     {
-      id: 25,
-      title: "Sydney Harbour Bridge Climbing",
-      author: "Jack Morrison",
-      location: "Sydney, Australia",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      excerpt: "Scaling the iconic Harbour Bridge at dawn for sunrise views. The guided climb offers unparalleled perspectives of the Opera House and sparkling harbour below.",
-      likes: 223
-    },
-    {
-      id: 26,
-      title: "Rio's Favela Street Art Workshop",
-      author: "Bruno Santos",
-      location: "Rio de Janeiro, Brazil",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      excerpt: "Creating murals with local artists in Rio's hillside communities. These workshops showcase how street art transforms neighborhoods and builds cultural bridges.",
-      likes: 187
-    },
-    {
-      id: 27,
-      title: "Moscow Metro Architecture Tours",
-      author: "Anastasia Volkov",
-      location: "Moscow, Russia",
-      image: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&h=600&fit=crop",
-      excerpt: "Exploring Moscow's palatial underground stations with art historians. Each metro stop is a museum showcasing Soviet-era mosaics, sculptures, and chandeliers.",
-      sponsored: true,
-      likes: 165
-    },
-    {
-      id: 28,
-      title: "Istanbul's Underground Cistern Concert",
-      author: "Elif Demir",
-      location: "Istanbul, Turkey",
-      image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=600&fit=crop",
-      excerpt: "Attending a classical music concert in the 6th-century Basilica Cistern. The acoustics of this ancient underground chamber create an otherworldly musical experience.",
-      likes: 156
-    },
-    {
-      id: 29,
+      id: 20,
       title: "Kyoto Temple Meditation Retreat",
       author: "Hiroshi Yamamoto",
       location: "Kyoto, Japan",
@@ -287,44 +203,7 @@ const BrowseGemstones = () => {
       likes: 198
     },
     {
-      id: 30,
-      title: "Vegas Underground Tunnel Art Tour",
-      author: "Sarah Mitchell",
-      location: "Las Vegas, USA",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      excerpt: "Discovering hidden murals in the flood tunnels beneath the Strip. These underground galleries showcase the raw creativity of Vegas' alternative art scene.",
-      likes: 143
-    },
-    {
-      id: 31,
-      title: "Edinburgh Underground Ghost Tours",
-      author: "Fiona MacLeod",
-      location: "Edinburgh, Scotland",
-      image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&h=600&fit=crop",
-      excerpt: "Exploring the Real Mary King's Close and other buried streets beneath the Royal Mile. These 16th-century underground chambers tell haunting tales of medieval life.",
-      likes: 167
-    },
-    {
-      id: 32,
-      title: "Marrakech Rooftop Yoga at Sunrise",
-      author: "Yasmin Benjelloun",
-      location: "Marrakech, Morocco",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
-      excerpt: "Practicing yoga on traditional riads' rooftops as the medina awakens below. The call to prayer mingles with morning stretches in this magical experience.",
-      likes: 189
-    },
-    {
-      id: 33,
-      title: "Stockholm Archipelago Ice Swimming",
-      author: "Astrid Eriksson",
-      location: "Stockholm, Sweden",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      excerpt: "Joining locals for winter ice swimming followed by sauna sessions. This centuries-old Nordic tradition connects you deeply with nature's harsh beauty.",
-      sponsored: true,
-      likes: 134
-    },
-    {
-      id: 34,
+      id: 21,
       title: "Cape Town Wine Cave Tastings",
       author: "Thabo Mthembu",
       location: "Cape Town, South Africa",
@@ -333,7 +212,7 @@ const BrowseGemstones = () => {
       likes: 176
     },
     {
-      id: 35,
+      id: 22,
       title: "Mumbai Dabbawalas Shadow Experience",
       author: "Priya Sharma",
       location: "Mumbai, India",
@@ -342,7 +221,7 @@ const BrowseGemstones = () => {
       likes: 203
     },
     {
-      id: 36,
+      id: 23,
       title: "Bangkok Temple Cat Meditation",
       author: "Siriporn Chaiyawat",
       location: "Bangkok, Thailand",
@@ -351,17 +230,7 @@ const BrowseGemstones = () => {
       likes: 156
     },
     {
-      id: 37,
-      title: "Melbourne Lane Graffiti Walking Tour",
-      author: "Jackson Clarke",
-      location: "Melbourne, Australia",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-      excerpt: "Exploring Melbourne's famous laneways with the artists who created them. These narrow alleys showcase some of the world's most vibrant and ever-changing street art.",
-      sponsored: true,
-      likes: 189
-    },
-    {
-      id: 38,
+      id: 24,
       title: "Vienna Classical Music in Sewers",
       author: "Klaus Weber",
       location: "Vienna, Austria",
@@ -370,126 +239,13 @@ const BrowseGemstones = () => {
       likes: 145
     },
     {
-      id: 39,
+      id: 25,
       title: "Havana Classic Car Mechanic Workshop",
       author: "Carlos Mendez",
       location: "Havana, Cuba",
       image: "https://images.unsplash.com/photo-1571406252791-db278046499f?w=800&h=600&fit=crop",
       excerpt: "Learning to maintain 1950s American cars with Cuban mechanics. These vintage beauties are kept running through incredible ingenuity and resourcefulness.",
       likes: 167
-    },
-    // 12 new gemstones from popular places with niche activities
-    {
-      id: 40,
-      title: "Underground London Book Tunnels",
-      author: "Oliver Winchester",
-      location: "London, UK",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
-      excerpt: "Exploring the secret network of tunnels beneath famous London bookshops. These hidden literary passages connect independent stores and host clandestine poetry readings.",
-      likes: 145
-    },
-    {
-      id: 41,
-      title: "Parisian Rooftop Beekeeping",
-      author: "Margot Leroy",
-      location: "Paris, France",
-      image: "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop",
-      excerpt: "Learning urban beekeeping on the rooftops of Montmartre. High above the bustling streets, beekeepers tend to hives that produce some of the city's finest honey.",
-      sponsored: true,
-      likes: 178
-    },
-    {
-      id: 42,
-      title: "NYC Abandoned Subway Exploration",
-      author: "Marcus Rodriguez",
-      location: "New York City, USA",
-      image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop",
-      excerpt: "Guided tours through forgotten subway stations and abandoned train tracks. Beneath the city that never sleeps lies a fascinating world frozen in time.",
-      likes: 203
-    },
-    {
-      id: 43,
-      title: "Tokyo Manhole Cover Art Hunt",
-      author: "Kenji Matsumoto",
-      location: "Tokyo, Japan",
-      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop",
-      excerpt: "Discovering the intricate art hidden beneath Tokyo's streets. Each ward has unique manhole covers featuring local landmarks, flowers, and cultural symbols.",
-      likes: 167
-    },
-    {
-      id: 44,
-      title: "Roman Catacombs Photography",
-      author: "Giuseppe Fontana",
-      location: "Rome, Italy",
-      image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop",
-      excerpt: "Capturing the haunting beauty of Rome's underground burial chambers. These ancient catacombs tell stories of early Christianity through carved symbols and frescoes.",
-      sponsored: true,
-      likes: 189
-    },
-    {
-      id: 45,
-      title: "Barcelona's Secret Modernist Buildings",
-      author: "Carmen Vidal",
-      location: "Barcelona, Spain",
-      image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop",
-      excerpt: "Beyond Gaudí lies a treasure trove of hidden modernist architecture. Private courtyards and lesser-known buildings reveal the movement's true diversity.",
-      likes: 156
-    },
-    {
-      id: 46,
-      title: "Amsterdam Canal House Concerts",
-      author: "Pieter Van Der Berg",
-      location: "Amsterdam, Netherlands",
-      image: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&h=600&fit=crop",
-      excerpt: "Intimate classical concerts in historic canal house living rooms. Local musicians open their 17th-century homes for magical evening performances.",
-      likes: 134
-    },
-    {
-      id: 47,
-      title: "Dubai Desert Falconry Experience",
-      author: "Fatima Al-Rashid",
-      location: "Dubai, UAE",
-      image: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=800&h=600&fit=crop",
-      excerpt: "Learning the ancient art of falconry in the Arabian desert. Working with Bedouin trainers and their magnificent birds connects you to centuries of tradition.",
-      sponsored: true,
-      likes: 198
-    },
-    {
-      id: 48,
-      title: "Singapore Urban Foraging Tour",
-      author: "Wei Lin Tan",
-      location: "Singapore",
-      image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=600&fit=crop",
-      excerpt: "Discovering edible plants in Singapore's urban landscape. Expert guides reveal how to find wild herbs and fruits growing in the city's green spaces.",
-      likes: 142
-    },
-    {
-      id: 49,
-      title: "Sydney Harbour Bridge Climbing",
-      author: "Jack Morrison",
-      location: "Sydney, Australia",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      excerpt: "Scaling the iconic Harbour Bridge at dawn for sunrise views. The guided climb offers unparalleled perspectives of the Opera House and sparkling harbour below.",
-      likes: 223
-    },
-    {
-      id: 50,
-      title: "Las Vegas Magic Underground",
-      author: "David Chen",
-      location: "Las Vegas, USA",
-      image: "https://images.unsplash.com/photo-1551448429-79c019eed126?w=800&h=600&fit=crop",
-      excerpt: "Secret magic societies meet in hidden venues beneath the Strip. Learn close-up magic from masters who perform for private audiences in underground speakeasies.",
-      likes: 178
-    },
-    {
-      id: 51,
-      title: "Miami Art Deco Ghost Tours",
-      author: "Isabella Martinez",
-      location: "Miami, USA",
-      image: "https://images.unsplash.com/photo-1462723346497-56fd3f6872df?w=800&h=600&fit=crop",
-      excerpt: "Exploring the haunted history of South Beach's iconic Art Deco district. These late-night tours reveal the ghostly tales behind the pastel facades.",
-      sponsored: true,
-      likes: 134
     }
   ];
 
