@@ -4,12 +4,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, User, Home, Gem, Info, Phone, MessageSquare } from "lucide-react";
+import { Menu, User, Home, Gem, Info, Phone, MessageSquare, LogOut, Map, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import { AuthModal } from "@/components/auth/AuthModal";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const pathname = usePathname();
+  const { user, profile, signOut } = useAuth();
 
   const isActive = (path: string) => pathname === path;
 
@@ -44,49 +50,61 @@ const Navigation = () => {
               }`}
             >
               <Gem className="w-4 h-4" />
-              Browse Gemstones
+              Browse
             </Link>
             <Link
-              href="/profile"
+              href="/map"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
-                isActive("/profile") ? "text-wandora-primary" : "text-wandora-dark"
+                isActive("/map") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
-              <User className="w-4 h-4" />
-              Profile
+              <Map className="w-4 h-4" />
+              Map
             </Link>
             <Link
-              href="/about"
+              href="/search"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
-                isActive("/about") ? "text-wandora-primary" : "text-wandora-dark"
+                isActive("/search") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
             >
-              <Info className="w-4 h-4" />
-              About
+              <Search className="w-4 h-4" />
+              Search
             </Link>
-            <Link
-              href="/contact"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
-                isActive("/contact") ? "text-wandora-primary" : "text-wandora-dark"
-              }`}
-            >
-              <Phone className="w-4 h-4" />
-              Contact
-            </Link>
-            <Link
-              href="/feedback"
-              className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
-                isActive("/feedback") ? "text-wandora-primary" : "text-wandora-dark"
-              }`}
-            >
-              <MessageSquare className="w-4 h-4" />
-              Feedback
-            </Link>
-            <Link href="/share">
-              <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
-                Create a Gemstone
+            
+            {user ? (
+              <>
+                <Link href="/create">
+                  <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
+                    Create Gemstone
+                  </Button>
+                </Link>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Avatar className="w-8 h-8 cursor-pointer">
+                      <AvatarImage src={profile?.avatar_url || ''} />
+                      <AvatarFallback>{profile?.name?.slice(0, 2).toUpperCase()}</AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile" className="flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        Profile
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => signOut()} className="flex items-center gap-2">
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+              <Button onClick={() => setShowAuthModal(true)} variant="outline">
+                Sign In
               </Button>
-            </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -124,61 +142,83 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
               >
                 <Gem className="w-4 h-4" />
-                Browse Gemstones
+                Browse
               </Link>
               <Link
-                href="/profile"
+                href="/map"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isActive("/profile") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
+                  isActive("/map") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
-                <User className="w-4 h-4" />
-                Profile
+                <Map className="w-4 h-4" />
+                Map
               </Link>
               <Link
-                href="/about"
+                href="/search"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isActive("/about") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
+                  isActive("/search") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
-                <Info className="w-4 h-4" />
-                About
+                <Search className="w-4 h-4" />
+                Search
               </Link>
-              <Link
-                href="/contact"
-                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isActive("/contact") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                <Phone className="w-4 h-4" />
-                Contact
-              </Link>
-              <Link
-                href="/feedback"
-                className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isActive("/feedback") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                <MessageSquare className="w-4 h-4" />
-                Feedback
-              </Link>
-              <Link
-                href="/share"
-                className="block px-3 py-2"
-                onClick={() => setIsOpen(false)}
-              >
-                <Button className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white">
-                  Create a Gemstone
-                </Button>
-              </Link>
+              
+              {user ? (
+                <>
+                  <Link
+                    href="/profile"
+                    className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
+                      isActive("/profile") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <User className="w-4 h-4" />
+                    Profile
+                  </Link>
+                  <Link
+                    href="/create"
+                    className="block px-3 py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Button className="w-full bg-wandora-primary hover:bg-wandora-primary/90 text-white">
+                      Create Gemstone
+                    </Button>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      signOut();
+                      setIsOpen(false);
+                    }}
+                    className="block w-full px-3 py-2 text-sm font-medium text-wandora-dark hover:text-wandora-primary transition-colors flex items-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => {
+                    setShowAuthModal(true);
+                    setIsOpen(false);
+                  }}
+                  className="block w-full px-3 py-2"
+                >
+                  <Button className="w-full" variant="outline">
+                    Sign In
+                  </Button>
+                </button>
+              )}
             </div>
           </div>
         )}
       </div>
+      
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </nav>
   );
 };

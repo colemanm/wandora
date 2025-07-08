@@ -19,7 +19,6 @@
     "/browse/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/browse/page.css",
       "static/chunks/app/browse/page.js"
     ],
     "/about/page": [
@@ -36,6 +35,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/share/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

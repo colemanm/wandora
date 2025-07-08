@@ -1,7 +1,7 @@
 {
+  "/browse/page": "app/browse/page.js",
+  "/page": "app/page.js",
   "/about/page": "app/about/page.js",
   "/share/page": "app/share/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/browse/page": "app/browse/page.js",
-  "/page": "app/page.js"
+  "/profile/page": "app/profile/page.js"
 }

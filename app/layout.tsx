@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/Navigation";
+import { AuthProvider } from '@/contexts/AuthContext';
 import './globals.css'
 
 const inter = Inter({ 
@@ -31,12 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-background font-sans">
-        <TooltipProvider>
-          <Navigation />
-          {children}
-          <Toaster />
-          <Sonner />
-        </TooltipProvider>
+        <AuthProvider>
+          <TooltipProvider>
+            <Navigation />
+            {children}
+            <Toaster />
+            <Sonner />
+          </TooltipProvider>
+        </AuthProvider>
       </body>
     </html>
   )
