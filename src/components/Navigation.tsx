@@ -1,21 +1,24 @@
 
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, User, Home, Gem, Info, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b border-wandora-lighter sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo as Home Button - Made larger and more prominent */}
-          <Link to="/" className="group flex-shrink-0">
+          <Link href="/" className="group flex-shrink-0">
             <img 
               src="/lovable-uploads/e8377627-2912-43bb-9240-47ce9996a2fe.png" 
               alt="Wandora Logo" 
@@ -26,7 +29,7 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              to="/"
+              href="/"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -35,7 +38,7 @@ const Navigation = () => {
               Home
             </Link>
             <Link
-              to="/browse"
+              href="/browse"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/browse") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -44,7 +47,7 @@ const Navigation = () => {
               Browse Gemstones
             </Link>
             <Link
-              to="/profile"
+              href="/profile"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/profile") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -53,7 +56,7 @@ const Navigation = () => {
               Profile
             </Link>
             <Link
-              to="/about"
+              href="/about"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/about") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -62,7 +65,7 @@ const Navigation = () => {
               About
             </Link>
             <Link
-              to="/contact"
+              href="/contact"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/contact") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -71,7 +74,7 @@ const Navigation = () => {
               Contact
             </Link>
             <Link
-              to="/feedback"
+              href="/feedback"
               className={`text-sm font-medium transition-colors hover:text-wandora-primary flex items-center gap-1 ${
                 isActive("/feedback") ? "text-wandora-primary" : "text-wandora-dark"
               }`}
@@ -79,7 +82,7 @@ const Navigation = () => {
               <MessageSquare className="w-4 h-4" />
               Feedback
             </Link>
-            <Link to="/share">
+            <Link href="/share">
               <Button className="bg-wandora-primary hover:bg-wandora-primary/90 text-white px-6">
                 Create a Gemstone
               </Button>
@@ -104,7 +107,7 @@ const Navigation = () => {
           <div className="md:hidden border-t border-wandora-lighter">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
-                to="/"
+                href="/"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -114,7 +117,7 @@ const Navigation = () => {
                 Home
               </Link>
               <Link
-                to="/browse"
+                href="/browse"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/browse") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -124,7 +127,7 @@ const Navigation = () => {
                 Browse Gemstones
               </Link>
               <Link
-                to="/profile"
+                href="/profile"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/profile") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -134,7 +137,7 @@ const Navigation = () => {
                 Profile
               </Link>
               <Link
-                to="/about"
+                href="/about"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/about") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -144,7 +147,7 @@ const Navigation = () => {
                 About
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/contact") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -154,7 +157,7 @@ const Navigation = () => {
                 Contact
               </Link>
               <Link
-                to="/feedback"
+                href="/feedback"
                 className={`block px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   isActive("/feedback") ? "text-wandora-primary bg-wandora-light" : "text-wandora-dark"
                 }`}
@@ -164,7 +167,7 @@ const Navigation = () => {
                 Feedback
               </Link>
               <Link
-                to="/share"
+                href="/share"
                 className="block px-3 py-2"
                 onClick={() => setIsOpen(false)}
               >
