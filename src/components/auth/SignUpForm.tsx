@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { DialogTitle } from '@/components/ui/dialog'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2 } from 'lucide-react'
 
@@ -40,30 +41,35 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
 
   if (success) {
     return (
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Check your email</CardTitle>
-          <CardDescription>
-            We've sent you a confirmation link to complete your registration
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Button onClick={onToggleMode} variant="outline" className="w-full">
-            Back to sign in
-          </Button>
-        </CardContent>
-      </Card>
+      <>
+        <DialogTitle className="sr-only">Check Your Email</DialogTitle>
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Check your email</CardTitle>
+            <CardDescription>
+              We've sent you a confirmation link to complete your registration
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button onClick={onToggleMode} variant="outline" className="w-full">
+              Back to sign in
+            </Button>
+          </CardContent>
+        </Card>
+      </>
     )
   }
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Create account</CardTitle>
-        <CardDescription>
-          Join Wandora to start sharing your travel experiences
-        </CardDescription>
-      </CardHeader>
+    <>
+      <DialogTitle className="sr-only">Create Account</DialogTitle>
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Create account</CardTitle>
+          <CardDescription>
+            Join Wandora to start sharing your travel experiences
+          </CardDescription>
+        </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -129,5 +135,6 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
         </div>
       </CardContent>
     </Card>
+    </>
   )
 }

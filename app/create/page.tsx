@@ -30,8 +30,6 @@ export default function CreateGemstone() {
   })
   const [images, setImages] = useState<File[]>([])
 
-  const supabase = createClient()
-
   if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-wandora-lighter to-white flex items-center justify-center p-4">
@@ -67,6 +65,7 @@ export default function CreateGemstone() {
   }
 
   const uploadImages = async (gemstoneId: string) => {
+    const supabase = createClient()
     const uploadedImages = []
     
     for (let i = 0; i < images.length; i++) {
@@ -107,6 +106,11 @@ export default function CreateGemstone() {
     setError(null)
 
     try {
+      const supabase = createClient()
+      
+      console.log('Creating gemstone with user_id:', user.id)
+      console.log('Form data:', formData)
+      
       // Create gemstone
       const { data: gemstone, error: gemstoneError } = await supabase
         .from('gemstones')
@@ -122,15 +126,20 @@ export default function CreateGemstone() {
         .select()
         .single()
 
+      console.log('Gemstone creation result:', { gemstone, gemstoneError })
+
       if (gemstoneError) throw gemstoneError
 
       // Upload images if any
       if (images.length > 0) {
+        console.log('Uploading images...')
         await uploadImages(gemstone.id)
       }
 
+      console.log('Redirecting to gemstone:', gemstone.id)
       router.push(`/gemstone/${gemstone.id}`)
     } catch (err: any) {
+      console.error('Error creating gemstone:', err)
       setError(err.message)
     } finally {
       setLoading(false)

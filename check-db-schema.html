@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Schema Check</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Database Schema Check</h1>
+    <div id="results"></div>
+    
+    <script>
+        const { createClient } = supabase;
+        
+        // Get environment variables from your .env file
+        const supabaseUrl = 'https://vxmzjcyqmljfqjvmxcnk.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4bXpqY3lxbWxqZnFqdm14Y25rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY0NjEwNjYsImV4cCI6MjA1MjAzNzA2Nn0.9P0a_pJZQr1rQTkNWWOUzqNmr5TzfQQNJfuEfRGgIb4'; // Replace with your actual key
+        
+        const client = createClient(supabaseUrl, supabaseKey);
+        
+        async function checkSchema() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Checking database schema...</p>';
+            
+            try {
+                // Check if gemstones table exists
+                console.log('Checking gemstones table...');
+                const { data: gemstones, error: gemstonesError } = await client
+                    .from('gemstones')
+                    .select('*')
+                    .limit(1);
+                
+                if (gemstonesError) {
+                    results.innerHTML += `<p>❌ Gemstones table error: ${gemstonesError.message}</p>`;
+                    console.error('Gemstones error:', gemstonesError);
+                } else {
+                    results.innerHTML += `<p>✅ Gemstones table exists</p>`;
+                }
+                
+                // Check if users table exists
+                console.log('Checking users table...');
+                const { data: users, error: usersError } = await client
+                    .from('users')
+                    .select('*')
+                    .limit(1);
+                
+                if (usersError) {
+                    results.innerHTML += `<p>❌ Users table error: ${usersError.message}</p>`;
+                    console.error('Users error:', usersError);
+                } else {
+                    results.innerHTML += `<p>✅ Users table exists</p>`;
+                }
+                
+                // Check if gemstone_images table exists
+                console.log('Checking gemstone_images table...');
+                const { data: images, error: imagesError } = await client
+                    .from('gemstone_images')
+                    .select('*')
+                    .limit(1);
+                
+                if (imagesError) {
+                    results.innerHTML += `<p>❌ Gemstone_images table error: ${imagesError.message}</p>`;
+                    console.error('Images error:', imagesError);
+                } else {
+                    results.innerHTML += `<p>✅ Gemstone_images table exists</p>`;
+                }
+                
+                // Test gemstone creation
+                console.log('Testing gemstone creation...');
+                const testGemstone = {
+                    user_id: '123e4567-e89b-12d3-a456-426614174000',
+                    title: 'Test Gemstone',
+                    description: 'This is a test gemstone',
+                    location_name: 'Test Location',
+                    latitude: 40.7128,
+                    longitude: -74.0060,
+                    user_rating: 5
+                };
+                
+                const { data: createdGemstone, error: createError } = await client
+                    .from('gemstones')
+                    .insert(testGemstone)
+                    .select()
+                    .single();
+                
+                if (createError) {
+                    results.innerHTML += `<p>❌ Gemstone creation error: ${createError.message}</p>`;
+                    console.error('Create error:', createError);
+                } else {
+                    results.innerHTML += `<p>✅ Gemstone created successfully: ${createdGemstone.id}</p>`;
+                    
+                    // Clean up
+                    await client.from('gemstones').delete().eq('id', createdGemstone.id);
+                    results.innerHTML += `<p>✅ Test gemstone deleted</p>`;
+                }
+                
+            } catch (error) {
+                results.innerHTML += `<p>❌ Unexpected error: ${error.message}</p>`;
+                console.error('Unexpected error:', error);
+            }
+        }
+        
+        checkSchema();
+    </script>
+</body>
+</html>

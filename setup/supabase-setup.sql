@@ -1,5 +1,12 @@
 -- Wandora Database Setup Script
+-- Version: 1.1 - Updated with user creation trigger and improved RLS policies
 -- Run this SQL in your Supabase SQL Editor
+--
+-- Recent Updates:
+-- - Added automatic user profile creation trigger
+-- - Fixed RLS policies for user signup
+-- - Improved created_at timestamp handling
+-- - Enhanced storage bucket policies
 
 -- Create Users Table
 CREATE TABLE users (
@@ -111,6 +118,7 @@ ALTER TABLE saved_gemstones ENABLE ROW LEVEL SECURITY;
 ALTER TABLE gemstone_views ENABLE ROW LEVEL SECURITY;
 
 -- Create RLS Policies for Users
+CREATE POLICY "Enable insert for authenticated users only" ON users FOR INSERT WITH CHECK (auth.role() = 'authenticated');
 CREATE POLICY "Users can view own profile" ON users FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Users can update own profile" ON users FOR UPDATE USING (auth.uid() = id);
 CREATE POLICY "Anyone can view user profiles" ON users FOR SELECT USING (true);
@@ -185,6 +193,29 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER gemstone_like_count_trigger
   AFTER INSERT OR DELETE ON gemstone_likes
   FOR EACH ROW EXECUTE FUNCTION update_gemstone_like_count();
+
+-- Create User Profile Creation Function and Trigger
+-- This automatically creates a user profile when a new auth user is created
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.users (id, email, name, created_at, updated_at)
+  VALUES (
+    NEW.id, 
+    NEW.email, 
+    COALESCE(NEW.raw_user_meta_data->>'name', split_part(NEW.email, '@', 1)),
+    NEW.created_at,  -- Use the auth.users created_at timestamp
+    NEW.created_at   -- Set updated_at to same as created_at initially
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create trigger to automatically create user profile
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
 -- Create Storage Buckets
 INSERT INTO storage.buckets (id, name, public) VALUES ('gemstone-images', 'gemstone-images', true);

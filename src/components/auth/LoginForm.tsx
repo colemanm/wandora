@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { DialogTitle } from '@/components/ui/dialog'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2 } from 'lucide-react'
 
@@ -35,13 +36,15 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
   }
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Welcome back</CardTitle>
-        <CardDescription>
-          Sign in to your account to continue exploring
-        </CardDescription>
-      </CardHeader>
+    <>
+      <DialogTitle className="sr-only">Sign In</DialogTitle>
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Welcome back</CardTitle>
+          <CardDescription>
+            Sign in to your account to continue exploring
+          </CardDescription>
+        </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -93,5 +96,6 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
         </div>
       </CardContent>
     </Card>
+    </>
   )
 }

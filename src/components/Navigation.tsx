@@ -93,7 +93,20 @@ const Navigation = () => {
                         Profile
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => signOut()} className="flex items-center gap-2">
+                    <DropdownMenuItem 
+                      onClick={async () => {
+                        console.log('Sign out clicked')
+                        try {
+                          await signOut()
+                          console.log('Sign out completed')
+                          // Optional: redirect to home page after sign out
+                          window.location.href = '/'
+                        } catch (error) {
+                          console.error('Sign out error:', error)
+                        }
+                      }} 
+                      className="flex items-center gap-2"
+                    >
                       <LogOut className="w-4 h-4" />
                       Sign Out
                     </DropdownMenuItem>
