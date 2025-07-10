@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2, MapPin, Star, Upload, ArrowLeft, Trash2 } from 'lucide-react'
 import { AuthModal } from '@/components/auth/AuthModal'
+import LocationPicker from '@/components/LocationPicker'
 import Image from 'next/image'
 
 const supabase = createClient()
@@ -188,24 +189,6 @@ export default function EditGemstone() {
     }
   }
 
-  const setCurrentLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setFormData(prev => ({
-            ...prev,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          }))
-        },
-        (error) => {
-          setError('Could not get your location. Please enter coordinates manually.')
-        }
-      )
-    } else {
-      setError('Geolocation is not supported by this browser.')
-    }
-  }
 
   if (!user) {
     return (
@@ -320,56 +303,20 @@ export default function EditGemstone() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="location">Location</Label>
-                <Input
-                  id="location"
-                  placeholder="Where did this happen?"
-                  value={formData.location_name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, location_name: e.target.value }))}
-                  required
-                  disabled={saving}
+                <Label>Location</Label>
+                <LocationPicker
+                  initialLatitude={formData.latitude || undefined}
+                  initialLongitude={formData.longitude || undefined}
+                  onLocationChange={(lat, lng, address) => {
+                    setFormData(prev => ({
+                      ...prev,
+                      latitude: lat,
+                      longitude: lng,
+                      location_name: address || prev.location_name,
+                    }))
+                  }}
                 />
               </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="latitude">Latitude</Label>
-                  <Input
-                    id="latitude"
-                    type="number"
-                    step="any"
-                    placeholder="0.000000"
-                    value={formData.latitude || ''}
-                    onChange={(e) => setFormData(prev => ({ ...prev, latitude: parseFloat(e.target.value) || 0 }))}
-                    required
-                    disabled={saving}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="longitude">Longitude</Label>
-                  <Input
-                    id="longitude"
-                    type="number"
-                    step="any"
-                    placeholder="0.000000"
-                    value={formData.longitude || ''}
-                    onChange={(e) => setFormData(prev => ({ ...prev, longitude: parseFloat(e.target.value) || 0 }))}
-                    required
-                    disabled={saving}
-                  />
-                </div>
-              </div>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={setCurrentLocation}
-                className="w-full"
-                disabled={saving}
-              >
-                <MapPin className="w-4 h-4 mr-2" />
-                Use Current Location
-              </Button>
 
               <div className="space-y-2">
                 <Label htmlFor="rating">Your Rating</Label>

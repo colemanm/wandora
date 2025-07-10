@@ -67,10 +67,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Authentication**: Supabase Auth
 - **Image Storage**: Supabase Storage buckets
 - **Icons**: Lucide React
-- **Mapping**: Mapbox GL JS (installed, awaiting integration)
-
-### Planned Integrations
-- **Mapping Service**: Maptiler SDK (per PRD specification)
+- **Mapping**: Mapbox GL JS (migrated from Maptiler for better performance)
 - **Static Maps**: Mapbox Static Images API
 
 ## Architecture Overview
@@ -139,13 +136,15 @@ interface Gemstone {
 - **Image Upload**: Supabase Storage integration
 - **View Tracking**: Unique view counting per gemstone
 - **Responsive Design**: Mobile-friendly interface
+- **Interactive Map View**: Browse gemstones on map with clustering
+- **Location Picker**: Map-based location selection for create/edit
+- **Static Maps**: Minimap display on detail pages
+- **Geolocation**: Current location detection
 
 ### 🚧 In Progress
-- **Map Integration**: Planning Maptiler SDK implementation
+- None
 
 ### 📋 Planned Features
-- **Interactive Map View**: Browse gemstones on map
-- **Location Picker**: Map-based location selection
 - **Follow System**: User following functionality
 - **Rating System**: Multi-user rating aggregation
 - **Collections**: Organized saved gemstones
@@ -159,22 +158,31 @@ interface Gemstone {
   ├── gemstone/[id]/          # Gemstone detail pages
   │   ├── page.tsx            # Detail view
   │   └── edit/               # Edit gemstone
+  ├── map/                    # Interactive map view
   ├── profile/                # User profile page
   └── ...                     # Other pages
 
 /src/
   ├── components/             # React components
   │   ├── auth/              # Authentication components
+  │   ├── map/               # Map-specific components
+  │   │   ├── MapMarker.tsx  # Custom marker component
+  │   │   ├── MapPopup.tsx   # Gemstone popup
+  │   │   └── MapControls.tsx # Map control buttons
   │   ├── ui/                # shadcn/ui components
+  │   ├── LocationPicker.tsx # Interactive location picker
+  │   ├── StaticMap.tsx      # Static map display
   │   └── ...                # Feature components
   ├── contexts/              # React contexts
   │   └── AuthContext.tsx    # Authentication context
   ├── lib/                   # Utility functions
-  │   └── supabase/          # Supabase client setup
+  │   ├── supabase/          # Supabase client setup
+  │   └── mapUtils.ts        # Mapbox utilities and config
   ├── types/                 # TypeScript definitions
   │   ├── index.ts          # Main type definitions
   │   └── database.ts       # Database schema types
   └── hooks/                 # Custom React hooks
+      └── useGeolocation.ts  # Location detection hook
 
 /plans/                       # Feature development plans
   ├── README.md              # Planning process documentation
@@ -219,8 +227,8 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
-# Mapping (Future Implementation)
-NEXT_PUBLIC_MAPTILER_API_KEY=your_maptiler_api_key
+# Mapping Configuration
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
 ```
 
 ## Database Security
@@ -247,22 +255,14 @@ NEXT_PUBLIC_MAPTILER_API_KEY=your_maptiler_api_key
 - Optimistic UI updates for likes/saves
 
 ### Future Optimizations
-- Map clustering for large datasets
 - Infinite scroll for gemstone feeds
 - Image resizing and compression
 - CDN integration for global performance
+- Map performance optimization for large datasets
 
 ## Next Steps
 
-### Map Integration Priority
-**📋 Detailed Plan**: See [`/plans/map-functionality.md`](./plans/map-functionality.md) for comprehensive implementation guidance.
-
-1. **Main Map View**: Interactive map displaying gemstones
-2. **Location Picker**: Map-based location selection for create/edit
-3. **Static Maps**: Minimap display on detail pages
-4. **Geolocation**: Current location detection
-
-### Follow System Implementation
+### Follow System Implementation (Priority)
 1. **Backend**: Follow/unfollow API endpoints
 2. **Frontend**: Follow buttons and follower lists
 3. **Feed**: Personalized feed based on follows

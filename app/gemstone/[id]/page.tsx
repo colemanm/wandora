@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { MapPin, Star, Eye, Heart, BookmarkIcon, Calendar, ArrowLeft, Share2, Edit2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import StaticMap from '@/components/StaticMap'
 
 const supabase = createClient()
 
@@ -347,20 +348,26 @@ export default function GemstoneDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Location Map placeholder */}
+            {/* Location Map */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Location</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <MapPin className="w-8 h-8 mx-auto mb-2" />
-                    <p className="text-sm">Map coming soon</p>
-                    <p className="text-xs mt-1">
-                      {gemstone.latitude}, {gemstone.longitude}
-                    </p>
-                  </div>
+                <StaticMap
+                  latitude={gemstone.latitude}
+                  longitude={gemstone.longitude}
+                  width={320}
+                  height={192}
+                  zoom={13}
+                  className="w-full"
+                  alt={`Map of ${gemstone.location_name}`}
+                />
+                <div className="mt-3 text-sm text-gray-600">
+                  <p className="font-medium">{gemstone.location_name}</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {gemstone.latitude.toFixed(4)}, {gemstone.longitude.toFixed(4)}
+                  </p>
                 </div>
               </CardContent>
             </Card>
